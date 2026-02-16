@@ -16,9 +16,7 @@ class Card extends Player {
 
 class Enemy extends Card {
     int enemyHP = defaultHP;
-  if (Player.cardValue > Enemy.cardValue) {
-    enemyHP--;
-  }
+
   
   
 }

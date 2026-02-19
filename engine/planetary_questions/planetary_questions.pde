@@ -4,7 +4,7 @@ int defaultHP = 3;
 
 
 
-
+//The base class for Player-based entities
 class Player {
   int playerHP = defaultHP;
   

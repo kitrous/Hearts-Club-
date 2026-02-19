@@ -17,7 +17,7 @@ class Card  {
   
 
 }
-
+//goodsyat
 class Enemy  {
     int enemyHP = defaultHP;
     

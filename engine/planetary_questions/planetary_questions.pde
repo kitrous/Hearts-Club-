@@ -24,11 +24,3 @@ class Enemy  {
   
   
 }
-
-class Turn extends Card {
-    
-    if (Enemy.cardValue > Player.cardValue) {
-       playerHP--;
-    }
-
-}

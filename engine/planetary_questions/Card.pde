@@ -8,12 +8,12 @@ class Card {
    int cardNumSize = 25;
    int dCWidth = 150;
    int dCHeight = 250;
-   int xPos = 200;
-   int yPos = 600;
+   int xPos = 700;
+   int yPos = 400;
 // constructor
- Card(int xPos, int yPos) {
-  x = xPos;
-  y = yPos;
+ Card(int x,int y) {
+   x = xPos;
+   y = yPos;
   
   } 
    
@@ -21,7 +21,7 @@ void display(){
   //test card viewer
     fill(255,255,255);
     rect(xPos,yPos,dCWidth,dCHeight);
-    fill(0,0,0);
+    fill(123,200,123);
   //text stuff for cards 
     textSize(cardNumSize);
     text(cardValue, xPos+25,yPos+30);

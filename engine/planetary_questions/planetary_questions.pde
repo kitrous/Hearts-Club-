@@ -7,8 +7,7 @@ void setup(){
 // i dont want to deal with different window sizes tbh
   fullScreen();
   //this here creates a new instance of the constructor card using the variable dCard
-  dCard = new Card(200,200);
-  
+    dCard = new Card(900,600);
 }
 
 void draw(){

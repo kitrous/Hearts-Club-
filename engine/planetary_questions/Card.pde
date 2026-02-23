@@ -1,6 +1,5 @@
 class Card extends Deck{
- int x;
- int y;
+ 
 //random values
  int cardValue = int(random(1,10));
 //so we dont just have a bunch of random numbers and the card look stay's consistent
@@ -12,8 +11,9 @@ class Card extends Deck{
    int yPos = 400;
 // constructor
  Card(int x,int y) {
-   x = xPos;
-   y = yPos;
+   super(x,y);
+   xPos = x;
+   yPos = y;
   
   } 
    

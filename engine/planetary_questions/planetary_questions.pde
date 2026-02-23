@@ -17,4 +17,10 @@ void draw(){
   then uses the function inside Card, that has all the drawing stuff*/
   dCard.display();
   dDeck.showDeck();
+  
+}
+
+void mousePressed() {
+  
+  dDeck.mousePressed();
 }

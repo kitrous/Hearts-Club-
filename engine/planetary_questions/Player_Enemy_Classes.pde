@@ -7,4 +7,6 @@ class Player {
 class Enemy {
   int enemyHP = defaultHP;
   
+  //Card.cardValue = 
+  
 }

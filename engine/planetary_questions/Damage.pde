@@ -1,6 +1,5 @@
-class Carddamage{
-
-  int cardvalue(){
+class CardDamage{
+/*  int cardvalue(){
     
   }
 if (player.cardvalue > enemy.cardvalue){
@@ -13,5 +12,5 @@ else if(player.cardvalue < enemy.cardvalue){
   player.hp--;
 }
 
-}
+}*/
 }

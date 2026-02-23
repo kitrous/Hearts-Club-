@@ -1,4 +1,4 @@
-class Card {
+class Card extends Deck{
  int x;
  int y;
 //random values

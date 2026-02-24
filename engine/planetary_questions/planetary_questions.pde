@@ -2,7 +2,8 @@ int defaultHP = 3;
 //gives a variable to the class
 Card dCard;
 Deck dDeck;
-
+Card playerCard;
+Card enemyCard;
 
 void setup(){
 // i dont want to deal with different window sizes tbh
@@ -17,7 +18,8 @@ void draw(){
   then uses the function inside Card, that has all the drawing stuff*/
   dCard.display();
   dDeck.showDeck();
-  
+  //playerCard.display();
+  //enemyCard.display();
 }
 
 void mousePressed() {

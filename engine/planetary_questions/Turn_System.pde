@@ -2,7 +2,6 @@
 
 class TurnSystem{
   
-
 boolean playerTurn = true;
 
 TurnSystem(){

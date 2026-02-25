@@ -19,6 +19,8 @@ void setup(){
 }
 
 void draw(){
+ stroke(0);
+ strokeWeight(5);
   /*this is using that shiny (wow) dCard variable that holds the Card constructor, 
   then uses the function inside Card, that has all the drawing stuff*/
   dCard.display();
@@ -32,7 +34,7 @@ void draw(){
 void mousePressed() {
   
   dDeck.mousePressed();
-  
+  ui.mousePressed();
   
 }
 

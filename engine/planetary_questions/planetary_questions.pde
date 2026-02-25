@@ -1,5 +1,7 @@
 int defaultHP = 3;
 //gives a variable to the class
+UI ui;
+TurnSystem ts;
 Card dCard;
 Deck dDeck;
 Card playerCard;
@@ -11,6 +13,9 @@ void setup(){
   //this here creates a new instance of the constructor card using the variable dCard
     dCard = new Card(100,600);
     dDeck = new Deck(1100,600);
+    
+    ts = new TurnSystem();
+    ui = new UI(new PVector (width*.75,height*.75));
 }
 
 void draw(){
@@ -20,9 +25,17 @@ void draw(){
   dDeck.showDeck();
   //playerCard.display();
   //enemyCard.display();
+  
+  ui.run();
 }
 
 void mousePressed() {
   
   dDeck.mousePressed();
+  
+  
+}
+
+void mouseClicked(){
+  ui.mouseClicked(); 
 }

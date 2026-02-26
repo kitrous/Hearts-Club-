@@ -20,7 +20,7 @@ class Deck{
       //end credit for Juno Morrow
       //Deal Card, creating a new instance of a card object to be placed on the player's side of "play area"
       //background(0);
-      dCard = new Card(width/2, height/2 + 50); //Takes the dCard, which is from the Card class, to makes a new Card at a specific x and Y location
+      dcard = new Card(width/2, height/2 + 50); //Takes the dCard, which is from the Card class, to makes a new Card at a specific x and Y location
       deckPressed = true;
     }
   }

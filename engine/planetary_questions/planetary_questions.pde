@@ -1,4 +1,3 @@
-int defaultHP = 3;
 
 UI ui;
 TurnSystem ts;
@@ -6,6 +5,11 @@ Card dcard;
 Deck ddeck;
 Card playerCard;
 Card enemyCard;
+Player player;
+Enemy enemy;
+
+int turnsPlayed = 0;
+int defaultHP = 50;
 
 void setup(){
  fullScreen();
@@ -15,6 +19,8 @@ void setup(){
     
   ts = new TurnSystem();
   ui = new UI(new PVector (width*.75,height*.75));
+  player = new Player();
+  enemy = new Enemy();
 }
 
 void draw(){
@@ -23,6 +29,9 @@ void draw(){
   dcard.display();
   ddeck.showDeck();
   ui.run();
+  enemy.updateTurn();
+  println(player.playerHP);
+  println(enemy.enemyHP);
   //playerCard.display();
   //enemyCard.display();
 }

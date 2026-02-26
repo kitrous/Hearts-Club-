@@ -1,4 +1,4 @@
-class Card extends Deck{
+class Card {
  
 int cardValue = int(random(1,10)); //random values
  
@@ -12,7 +12,6 @@ int cardValue = int(random(1,10)); //random values
    
 // constructor
 Card(int x,int y) {
-    super(x,y);
     xPos = x;
     yPos = y;
   

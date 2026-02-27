@@ -17,10 +17,13 @@ class UI {
   }
 
   void display() {
+    
     stroke(c);
     strokeWeight(5);
     fill(200, 255, 200);
     ellipse(endTurnButton.x, endTurnButton.y, buttonRadius*2, buttonRadius*2);
+    text("Player HP:"+player.playerHP, width*.10, height*.9);
+    text("Enemy HP:"+enemy.enemyHP, width*.10, height*.1);
   }
 
   void collision() {

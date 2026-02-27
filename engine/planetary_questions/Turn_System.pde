@@ -1,4 +1,4 @@
-//possibly use enum
+  //possibly use enum
 
 class TurnSystem {
 

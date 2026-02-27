@@ -11,8 +11,10 @@ Enemy enemy;
 int turnsPlayed = 0;
 int defaultHP = 50;
 
+int enemyCardValue = 0;
+
 void setup() {
-  
+  //size(1000,1000);
   fullScreen();
   
   //x and y values for the objects
@@ -33,7 +35,7 @@ void draw() {
   ui.run();
   enemy.updateTurn();
  
-  fill(0);
+  //fill(0);
   
   //playerCard.display();
   //enemyCard.display();

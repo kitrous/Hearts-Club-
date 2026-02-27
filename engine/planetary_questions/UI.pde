@@ -17,13 +17,24 @@ class UI {
   }
 
   void display() {
-    
+
     stroke(c);
     strokeWeight(5);
     fill(200, 255, 200);
     ellipse(endTurnButton.x, endTurnButton.y, buttonRadius*2, buttonRadius*2);
+    fill(0);
+    textSize(25);
+    //once turn is ended the counter will go up by one
+    text("End Turn: "+turnsPlayed, endTurnButton.x-50, endTurnButton.y);
+    fill(200, 255, 200);
     text("Player HP:"+player.playerHP, width*.10, height*.9);
     text("Enemy HP:"+enemy.enemyHP, width*.10, height*.1);
+    // Enemy Card Display
+    fill(255);
+    rect(width*.45,height*.2,150, 250);
+    fill(0);
+    
+    //text(enemyCardValue+ts, width*.46,height*.225);
   }
 
   void collision() {
@@ -42,18 +53,18 @@ class UI {
     //} else {
     //  mousClickedReleased = true;
     //}
-    if(insideButton == true)
+    if (insideButton == true)
     {
       ts.endTurn();
       c = color(0, 0, 0);
-      println("bob");
+      //println("bob");just a test to see if it will come out repeated or a single time
       strokeWeight(10);
     }
   }
-  
+
   void mousePressed()
   {
-    if(insideButton == true)
+    if (insideButton == true)
     {
       c = color(255, 0, 0);
     }

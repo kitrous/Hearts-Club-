@@ -32,5 +32,7 @@ class Enemy {
       ts.calcWinner();
     }
   }
+  
+
   //Card.cardValue =
 }

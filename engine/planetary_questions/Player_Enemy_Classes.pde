@@ -27,7 +27,7 @@ class Enemy {
     if (!ts.playerTurn) {
       dcard = new Card(width/2 - 150, height/2 + 50); //Takes the dCard, which is from the Card class, to makes a new Card at a specific x and Y location
 
-      //println(dcard.cardValue);
+      
       enemy.updateEnemyCard(dcard.cardValue);
       ts.calcWinner();
     }

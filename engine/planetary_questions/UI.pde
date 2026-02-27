@@ -1,6 +1,5 @@
 class UI {
   PVector endTurnButton;
-  boolean mouseClickedReleased = true;
   float buttonRadius = 125;
   boolean insideButton;
   color c = color(0, 0, 0);

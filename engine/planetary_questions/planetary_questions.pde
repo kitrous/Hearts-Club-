@@ -8,7 +8,7 @@ Card enemyCard;
 Player player;
 Enemy enemy;
 
-int turnsPlayed = 0;
+
 int defaultHP = 50;
 
 int enemyCardValue = 0;
@@ -37,8 +37,7 @@ void draw() {
  
   //fill(0);
   
-  //playerCard.display();
-  //enemyCard.display();
+  
 }
 
 void mousePressed() {

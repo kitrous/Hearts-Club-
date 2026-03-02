@@ -1,10 +1,14 @@
 
 class Deck {
 
-  int deckXPos = 1000; //The deck's X Position
-  int deckYPos = 400; // The deck's Y Position
-  int deckWidth = 150; //The deck's width size to be displayed on the "play area"
-  int deckHeight = 250; //The deck's height size to be displayed on the "play area"
+  float deckXPos = width*.7;
+  float deckYPos = height*.3;
+  float deckWidth = (width+height)*.05;
+  float deckHeight = (width+height)*.075;
+  //  int deckXPos = 1000; //The deck's X Position
+  //  int deckYPos = 400; // The deck's Y Position
+  //int deckWidth = 150; //The deck's width size to be displayed on the "play area"
+  //int deckHeight = 250; //The deck's height size to be displayed on the "play area"
 
   Deck(int mx, int my) {
     deckXPos = mx;

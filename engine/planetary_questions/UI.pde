@@ -1,9 +1,9 @@
 class UI {
   PVector endTurnButton;
-  float buttonRadius = 125;
+  float buttonRadius = (width+height)*.03;
   boolean insideButton;
   color c = color(0, 0, 0);
-
+  int sw = 5;
   //constructor
   UI(PVector pos)
   {
@@ -18,13 +18,15 @@ class UI {
   void display() {
 
     stroke(c);
-    strokeWeight(5);
+    strokeWeight(sw);
     fill(200, 255, 200);
     ellipse(endTurnButton.x, endTurnButton.y, buttonRadius*2, buttonRadius*2);
     fill(0);
     textSize(25);
+    strokeWeight(5);
+   stroke(0);
     //once turn is ended the counter will go up by one
-    text("End Turn: "+turnsPlayed, endTurnButton.x-50, endTurnButton.y);
+    text("End Turn: ", endTurnButton.x-50, endTurnButton.y);
     fill(200, 255, 200);
     text("Player HP:"+player.playerHP, width*.10, height*.9);
     text("Enemy HP:"+enemy.enemyHP, width*.10, height*.1);
@@ -42,6 +44,7 @@ class UI {
     } else {
       insideButton = false;
       c = color(0, 0, 0);
+       sw = 15;
     }
   }
 
@@ -57,7 +60,7 @@ class UI {
       ts.endTurn();
       c = color(0, 0, 0);
       //println("bob");just a test to see if it will come out repeated or a single time
-      strokeWeight(10);
+       sw = 15;
     }
   }
 
@@ -66,6 +69,7 @@ class UI {
     if (insideButton == true)
     {
       c = color(255, 0, 0);
+     
     }
   }
 }

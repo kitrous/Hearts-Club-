@@ -10,6 +10,8 @@ class Deck {
   //int deckWidth = 150; //The deck's width size to be displayed on the "play area"
   //int deckHeight = 250; //The deck's height size to be displayed on the "play area"
 
+  int dCardXPos = 0;
+
   Deck(int mx, int my) {
     deckXPos = mx;
     deckYPos = my;
@@ -21,11 +23,18 @@ class Deck {
     //orig contrib: Needed to use this to detect the distance between the rect of the deck card and the mouse
     if (mouseX > deckXPos && mouseX < deckXPos + deckWidth && mouseY > deckYPos && mouseY < deckYPos + deckHeight) {
       //end credit for Juno Morrow
-
-      //Deal Card, creating a new instance of a card object to be placed on the player's side of "play area"
-      dcard = new Card(width/2, height/2 + 50); //Takes the dCard, which is from the Card class, to makes a new Card at a specific x and Y location
-
       
+      //Deal Card, creating a new instance of a card object to be placed on the player's side of "play area"
+      pCard1 = new Card(width/2, height/2 + 50); //Takes the dCard, which is from the Card class, to makes a new Card at a specific x and Y location
+      for (int i = 0; i < defaultCard.length; i++){
+        if (i == 0){
+          dCardXPos = 0;
+        }
+        
+        dCardXPos += 200;
+        defaultCard[i] = new Card(width/2 - 800 + dCardXPos, height/2 + 50);
+      }
+
       player.updatePlayerCard(dcard.cardValue);
       ts.endTurn();
     }

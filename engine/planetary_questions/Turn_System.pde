@@ -1,5 +1,5 @@
   //possibly use enum
-
+int turnsPlayed;
 class TurnSystem {
 
   boolean playerTurn = true;
@@ -20,6 +20,7 @@ class TurnSystem {
   }
   void calcWinner() {
     if (player.currentCardValue == enemy.currentCardValue) {
+      turnsPlayed += 1;
       ts.endTurn();
       return;
     } else if (player.currentCardValue < enemy.currentCardValue) {
@@ -33,7 +34,7 @@ class TurnSystem {
     if (enemy.enemyHP <= 0) {
       //game over, make sure it doesnt run the end turn function
     }
-
+    turnsPlayed += 1;
     ts.endTurn();
   }
 }

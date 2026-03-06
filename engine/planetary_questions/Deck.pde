@@ -10,9 +10,10 @@ class Deck {
   //int deckWidth = 150; //The deck's width size to be displayed on the "play area"
   //int deckHeight = 250; //The deck's height size to be displayed on the "play area"
 
-  Deck(int mx, int my) {
-    deckXPos = mx;
-    deckYPos = my;
+  //Deck(int mx, int my)
+  Deck(){
+    //deckXPos = mx;
+    //deckYPos = my;
   }
 
   void mousePressed() {

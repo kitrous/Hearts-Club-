@@ -19,7 +19,8 @@ void setup() {
   
   //x and y values for the objects
   dcard = new Card(100, 600);
-  ddeck = new Deck(1100, 600);
+  //ddeck = new Deck(1100, 600);
+  ddeck = new Deck();
 
   ts = new TurnSystem();
   ui = new UI(new PVector (width*.75, height*.75));
@@ -34,7 +35,7 @@ void draw() {
   ddeck.showDeck();
   ui.run();
   enemy.updateTurn();
- 
+ println(ui.sw);
   //fill(0);
   
   

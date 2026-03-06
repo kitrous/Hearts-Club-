@@ -19,22 +19,24 @@ class UI {
 
     stroke(c);
     strokeWeight(sw);
+    
     fill(200, 255, 200);
-    ellipse(endTurnButton.x, endTurnButton.y, buttonRadius*2, buttonRadius*2);
+    ellipse(endTurnButton.x*1.2, endTurnButton.y*1.2, buttonRadius*2, buttonRadius*2);
     fill(0);
     textSize(25);
+    
     strokeWeight(5);
-   stroke(0);
+    stroke(0);
     //once turn is ended the counter will go up by one
     text("End Turn: ", endTurnButton.x-50, endTurnButton.y);
     fill(200, 255, 200);
-    text("Player HP:"+player.playerHP, width*.10, height*.9);
+    text("Player HP:"+player.playerHP, width*.1, height*.9);
     text("Enemy HP:"+enemy.enemyHP, width*.10, height*.1);
     // Enemy Card Display
     fill(255);
-    rect(width*.45,height*.2,150, 250);
+    rect(width*.45, height*.2, 150, 250);
     fill(0);
-    
+
     //text(enemyCardValue+ts, width*.46,height*.225);
   }
 
@@ -44,7 +46,7 @@ class UI {
     } else {
       insideButton = false;
       c = color(0, 0, 0);
-       sw = 15;
+      sw = 5;
     }
   }
 
@@ -60,7 +62,7 @@ class UI {
       ts.endTurn();
       c = color(0, 0, 0);
       //println("bob");just a test to see if it will come out repeated or a single time
-       sw = 15;
+      sw = 5;
     }
   }
 
@@ -69,7 +71,7 @@ class UI {
     if (insideButton == true)
     {
       c = color(255, 0, 0);
-     
+      sw = 15;
     }
   }
 }

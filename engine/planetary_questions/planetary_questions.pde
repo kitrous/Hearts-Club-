@@ -7,7 +7,7 @@ Card[] defaultCard = new Card[5];
 Deck ddeck;
 Player player;
 Enemy enemy;
-
+Timer gameTimer;
 
 int defaultHP = 50;
 
@@ -16,6 +16,8 @@ int enemyCardValue = 0;
 void setup() {
   //size(1000,1000);
   fullScreen();
+  
+  gameTimer = new Timer();
   
   //x and y values for the objects
 
@@ -54,7 +56,8 @@ void draw() {
  println(ui.sw);
   //fill(0);
   
-  Timer();
+  gameTimer.calcTime();
+  
 }
 
 void mousePressed() {
@@ -65,18 +68,4 @@ void mousePressed() {
 
 void mouseClicked() {
   ui.mouseClicked();
-}
-
-void Timer(){
-  int currentTime = 0;
-  int ellapsedMillis = 1000;
-  
-  
-  
-  
-  
-  println("Current Time: " + currentTime);
-  //println("Timer: " + timer);
-  
-  
 }

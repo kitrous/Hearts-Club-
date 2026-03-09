@@ -10,21 +10,18 @@ class Deck {
   //int deckWidth = 150; //The deck's width size to be displayed on the "play area"
   //int deckHeight = 250; //The deck's height size to be displayed on the "play area"
 
-<<<<<<< HEAD
   //Deck(int mx, int my)
-  Deck(){
+  Deck(){}
     //deckXPos = mx;
     //deckYPos = my;
-=======
   int dCardXPos = 0;
-
+  
   Deck(int mx, int my) {
     deckXPos = mx;
     deckYPos = my;
->>>>>>> 37d3e25461de9aeae7a2e15f931456c5869b7953
   }
 
-  void mousePressed() {
+  void mousePressed(){
     //credit: following if-statement was taken from user Juno Morrow
     //url: https://openprocessing.org/sketch/758431
     //orig contrib: Needed to use this to detect the distance between the rect of the deck card and the mouse

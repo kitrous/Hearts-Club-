@@ -1,7 +1,8 @@
 class Card {
 
   int cardValue = int(random(1, 10)); //random values
-
+  boolean isHovering;
+  boolean isDraggingCard;
   /* so we dont just have a bunch of random numbers and the card look stay's consistent
    edit these values to change how the card looks/position etc */
   int cardNumSize = 25;
@@ -15,6 +16,8 @@ class Card {
     xPos = x;
     yPos = y;
   }
+  
+  
 
   void display() {
 
@@ -27,4 +30,39 @@ class Card {
     textSize(cardNumSize);
     text(cardValue, xPos+25, yPos+30);
   }
+  void Hovering() {
+    
+    if (mouseX > xPos && mouseX < xPos + dCWidth && mouseY > yPos && mouseY < yPos + dCHeight){
+ 
+     isHovering = true;
+     println("hover");
+    
+    } else {
+      isHovering = false;
+    }
+    
+    if (isDraggingCard){
+      mouseDragged();
+    }
+    
+  }
+  
+  void mousePressed(){
+    println("hardy har har");
+    
+    if (isHovering){
+      isDraggingCard = true;
+    } else {
+      isDraggingCard = false;
+    }
+  }
+  
+  void mouseDragged(){
+    
+    xPos = mouseX;
+    yPos = mouseY;
+    
+    
+  }
+  
 }

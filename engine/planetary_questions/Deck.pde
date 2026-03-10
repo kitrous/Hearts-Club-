@@ -14,7 +14,7 @@ class Deck {
   Deck(){}
     //deckXPos = mx;
     //deckYPos = my;
-  int dCardXPos = 0;
+  int cardXOffset = 0;
   
   Deck(int mx, int my) {
     deckXPos = mx;
@@ -32,11 +32,11 @@ class Deck {
       pCard1 = new Card(width/2, height/2 + 50); //Takes the dCard, which is from the Card class, to makes a new Card at a specific x and Y location
       for (int i = 0; i < defaultCard.length; i++){
         if (i == 0){
-          dCardXPos = 0;
+          cardXOffset = 0;
         }
         
-        dCardXPos += 200;
-        defaultCard[i] = new Card(width/2 - 800 + dCardXPos, height/2 + 50);
+        cardXOffset += 200;
+        defaultCard[i] = new Card(width/2 - 800 + cardXOffset, height/2 + 50);
       }
 
       player.updatePlayerCard(dcard.cardValue);

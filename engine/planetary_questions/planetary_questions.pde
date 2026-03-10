@@ -42,18 +42,21 @@ void setup() {
 
 void draw() {
   background(100);
-
+  
+  
   dcard.display();
   pCard1.display();
   
   for (int i = 0; i < defaultCard.length; i++){
     defaultCard[i].display();
+    defaultCard[i].Hovering();
+    defaultCard[i].mousePressed();
   }
   
   ddeck.showDeck();
   ui.run();
   enemy.updateTurn();
- println(ui.sw);
+  println(ui.sw);
   //fill(0);
   
   gameTimer.calcTime();
@@ -68,4 +71,22 @@ void mousePressed() {
 
 void mouseClicked() {
   ui.mouseClicked();
+}
+
+
+void mouseDragged() {
+  
+
+}
+void Timer(){
+  int currentTime = 0;
+  int ellapsedMillis = 1000;
+  
+  
+  
+  
+  
+  //println("Timer: " + timer);
+  
+  
 }

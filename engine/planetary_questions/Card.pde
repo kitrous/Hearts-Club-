@@ -34,16 +34,19 @@ class Card {
     
     if (mouseX > xPos && mouseX < xPos + dCWidth && mouseY > yPos && mouseY < yPos + dCHeight){
  
-     isHovering = true;
+      if (!isDraggingCard){
+        isHovering = true;
+      }
+     
      println("hover");
     
     } else {
       isHovering = false;
     }
     
-    if (isDraggingCard){
-      mouseDragged();
-    }
+    //if (isDraggingCard){
+    //  mouseDragged();
+    //}
     
   }
   
@@ -55,13 +58,18 @@ class Card {
     } else {
       isDraggingCard = false;
     }
+    
+        if (isDraggingCard){
+      mouseDragged();
+    }
   }
   
   void mouseDragged(){
     
-    xPos = mouseX;
-    yPos = mouseY;
+    //mousePressed();
     
+    xPos = mouseX - dCWidth/2;
+    yPos = mouseY - dCHeight/2;
     
   }
   

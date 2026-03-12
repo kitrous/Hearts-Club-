@@ -50,7 +50,7 @@ void draw() {
   for (int i = 0; i < defaultCard.length; i++){
     defaultCard[i].display();
     defaultCard[i].Hovering();
-    defaultCard[i].mousePressed();
+    //defaultCard[i].mousePressed();
   }
   
   ddeck.showDeck();
@@ -67,6 +67,11 @@ void mousePressed() {
 
   ddeck.mousePressed();
   ui.mousePressed();
+  for (int i = 0; i < defaultCard.length; i++){
+    defaultCard[i].display();
+    defaultCard[i].Hovering();
+    defaultCard[i].mousePressed();
+  }
 }
 
 void mouseClicked() {

@@ -14,8 +14,8 @@ int defaultHP = 50;
 int enemyCardValue = 0;
 
 void setup() {
-  //size(1000,1000);
-  fullScreen();
+  size(1500,1000);
+  //fullScreen();
   
   gameTimer = new Timer();
   
@@ -56,7 +56,7 @@ void draw() {
   ddeck.showDeck();
   ui.run();
   enemy.updateTurn();
-  println(ui.sw);
+  //println(ui.sw);
   //fill(0);
   
   gameTimer.calcTime();
@@ -66,6 +66,7 @@ void draw() {
 void mousePressed() {
 
   ddeck.mousePressed();
+  
   ui.mousePressed();
   for (int i = 0; i < defaultCard.length; i++){
     defaultCard[i].display();
@@ -78,7 +79,12 @@ void mouseClicked() {
   ui.mouseClicked();
 }
 
+void mouseReleased(){
+ for (int i = 0; i < defaultCard.length; i++){
 
+    defaultCard[i].mouseReleased();
+  } 
+}
 void mouseDragged() {
   
 

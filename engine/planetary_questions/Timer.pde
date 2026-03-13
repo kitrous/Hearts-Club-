@@ -9,10 +9,10 @@ class Timer {
       if (millis() - previousTime >= ellapsedMillis) {
           previousTime = millis();
           currentTime += 1;
-          println("Current Time: " + currentTime);
+          //println("Current Time: " + currentTime);
          }
       } else {
-        println("Turn End");
+        //println("Turn End");
     }
   }
 }

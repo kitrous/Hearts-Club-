@@ -20,7 +20,10 @@ class Card {
   
 
   void display() {
-
+    if(isDraggingCard) 
+    {
+      xPos = mouseX; yPos = mouseY;
+    }
     //test card viewer
     fill(255, 255, 255);
     rect(xPos, yPos, dCWidth, dCHeight);
@@ -38,7 +41,7 @@ class Card {
         isHovering = true;
       }
      
-     println("hover");
+     //println("hover");
     
     } else {
       isHovering = false;
@@ -51,26 +54,35 @@ class Card {
   }
   
   void mousePressed(){
-    println("hardy har har");
+    //println("hardy har har");
     
     if (isHovering){
       isDraggingCard = true;
+      println("anything");
+      
     } else {
-      isDraggingCard = false;
+      //isDraggingCard = false;
+      println("anythingelse");
     }
     
-        if (isDraggingCard){
-      mouseDragged();
-    }
+    //    if (isDraggingCard){
+    //  mouseDragged();
+    //}
   }
   
-  void mouseDragged(){
-    
-    //mousePressed();
-    
-    xPos = mouseX - dCWidth/2;
-    yPos = mouseY - dCHeight/2;
-    
+  void mouseReleased(){
+   if(isDraggingCard){
+    isDraggingCard=false; 
+   }
   }
+  
+  //void mouseDragged(){
+    
+  //  //mousePressed();
+    
+  //  xPos = mouseX - dCWidth/2;
+  //  yPos = mouseY - dCHeight/2;
+    
+  //}
   
 }

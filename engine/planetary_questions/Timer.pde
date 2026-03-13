@@ -7,10 +7,10 @@ class Timer {
   void calcTime(){
     if (currentTime < timeLimit){  
       if (millis() - previousTime >= ellapsedMillis) {
-        previousTime = millis();
-        currentTime += 1;
-        println("Current Time: " + currentTime);
-        }
+          previousTime = millis();
+          currentTime += 1;
+          println("Current Time: " + currentTime);
+         }
       } else {
         println("Turn End");
     }

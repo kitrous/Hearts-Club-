@@ -10,22 +10,34 @@ class Card {
   int dCHeight = 150;
   int xPos = 700;
   int yPos = 400;
-  int zoneSpots = 5;
-  int playerZoneX = 200;
+  //variables for the zones
+  //player
+  int playerZoneX = 250;
   int playerZoneY = 400;
+  //enemy
+  int enemyZoneX = 250;
+  int enemyZoneY = 150;
   int zoneSpacing = 100;
-  
+  int zoneSpots = 5;
+
   // constructor
   Card(int x, int y) {
     xPos = x;
     yPos = y;
   }
   // here are the zones for the player
-  void playerBattlefieldDisplay() {
+  void BattlefieldDisplay() {
+    //player zone
     for (int i = 0; i < zoneSpots; i++) {
-      rect(playerZoneX + i * (dCWidth + zoneSpacing), playerZoneY , dCWidth, dCHeight);
+      rect(playerZoneX + i * (dCWidth + zoneSpacing), playerZoneY, dCWidth, dCHeight);
+    }
+    //enemy zone
+    for (int i = 0; i < zoneSpots; i++) {
+      rect(enemyZoneX + i * (dCWidth + zoneSpacing), enemyZoneY, dCWidth, dCHeight);
     }
   }
+
+  
 
   void display() {
     if (isDraggingCard)

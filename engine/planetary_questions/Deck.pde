@@ -36,7 +36,7 @@ class Deck {
         }
         
         cardXOffset += 200;
-        defaultCard[i] = new Card(width/2 - 800 + cardXOffset, height/2 + 50);
+        defaultCard[i] = new Card(width/2 - 800 + cardXOffset, height/2 + 75);
       }
 
       player.updatePlayerCard(dcard.cardValue);

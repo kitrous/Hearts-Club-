@@ -90,15 +90,3 @@ void mouseDragged() {
   
 
 }
-void Timer(){
-  int currentTime = 0;
-  int ellapsedMillis = 1000;
-  
-  
-  
-  
-  
-  //println("Timer: " + timer);
-  
-  
-}

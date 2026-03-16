@@ -10,19 +10,27 @@ class Card {
   int dCHeight = 150;
   int xPos = 700;
   int yPos = 400;
-
+  int zoneSpots = 5;
+  int zoneX = 100;
+  int zoneY = 400;
+  
   // constructor
   Card(int x, int y) {
     xPos = x;
     yPos = y;
   }
-  
-  
+
+  void battlefieldDisplay() {
+    for (int i = 0; i < zoneSpots; i++) {
+      rect(zoneX, zoneY, dCWidth, dCHeight);
+    }
+  }
 
   void display() {
-    if(isDraggingCard) 
+    if (isDraggingCard)
     {
-      xPos = mouseX; yPos = mouseY;
+      xPos = mouseX;
+      yPos = mouseY;
     }
     //test card viewer
     fill(255, 255, 255);
@@ -34,55 +42,51 @@ class Card {
     text(cardValue, xPos+25, yPos+30);
   }
   void Hovering() {
-    
-    if (mouseX > xPos && mouseX < xPos + dCWidth && mouseY > yPos && mouseY < yPos + dCHeight){
- 
-      if (!isDraggingCard){
+
+    if (mouseX > xPos && mouseX < xPos + dCWidth && mouseY > yPos && mouseY < yPos + dCHeight) {
+
+      if (!isDraggingCard) {
         isHovering = true;
       }
-     
-     //println("hover");
-    
+
+      //println("hover");
     } else {
       isHovering = false;
     }
-    
+
     //if (isDraggingCard){
     //  mouseDragged();
     //}
-    
   }
-  
-  void mousePressed(){
+
+  void mousePressed() {
     //println("hardy har har");
-    
-    if (isHovering){
+
+    if (isHovering) {
       isDraggingCard = true;
       println("anything");
-      
     } else {
       //isDraggingCard = false;
       println("anythingelse");
     }
-    
+
     //    if (isDraggingCard){
     //  mouseDragged();
     //}
   }
-  
-  void mouseReleased(){
-   if(isDraggingCard){
-    isDraggingCard=false; 
-   }
+
+  void mouseReleased() {
+    if (isDraggingCard) {
+      isDraggingCard=false;
+    }
   }
-  
+
   //void mouseDragged(){
-    
+
   //  //mousePressed();
-    
+
   //  xPos = mouseX - dCWidth/2;
   //  yPos = mouseY - dCHeight/2;
-    
+
   //}
-  
 }

@@ -43,7 +43,7 @@ void setup() {
 void draw() {
   background(100);
   
-  
+  dcard.battlefieldDisplay();
   dcard.display();
   pCard1.display();
   

@@ -11,8 +11,8 @@ class Card {
   int xPos = 700;
   int yPos = 400;
   int zoneSpots = 5;
-  int zoneX = 200;
-  int zoneY = 400;
+  int playerZoneX = 200;
+  int playerZoneY = 400;
   int zoneSpacing = 100;
   
   // constructor
@@ -20,10 +20,10 @@ class Card {
     xPos = x;
     yPos = y;
   }
-
-  void battlefieldDisplay() {
+  // here are the zones for the player
+  void playerBattlefieldDisplay() {
     for (int i = 0; i < zoneSpots; i++) {
-      rect(zoneX + i * (dCWidth + zoneSpacing), zoneY , dCWidth, dCHeight);
+      rect(playerZoneX + i * (dCWidth + zoneSpacing), playerZoneY , dCWidth, dCHeight);
     }
   }
 

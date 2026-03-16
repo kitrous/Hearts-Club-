@@ -44,7 +44,7 @@ void setup() {
 void draw() {
   background(100);
   
-  dcard.battlefieldDisplay();
+  dcard.playerBattlefieldDisplay();
   dcard.display();
   pCard1.display();
   

@@ -6,8 +6,8 @@ class Card {
   /* so we dont just have a bunch of random numbers and the card look stay's consistent
    edit these values to change how the card looks/position etc */
   int cardNumSize = 25;
-  int dCWidth = 150;
-  int dCHeight = 250;
+  int dCWidth = 100;
+  int dCHeight = 150;
   int xPos = 700;
   int yPos = 400;
 

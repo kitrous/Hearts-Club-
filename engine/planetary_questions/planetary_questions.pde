@@ -3,6 +3,7 @@ TurnSystem ts;
 Card dcard;
 Card pCard1;
 Card[] defaultCard = new Card[5];
+
 //Card pCard = new Array();
 Deck ddeck;
 Player player;
@@ -32,7 +33,7 @@ void setup() {
   for (int i = 0; i < defaultCard.length; i++){
         defaultCard[i] = new Card(width/2 + 1000, height/2 + 400);
       }
-
+   
 
   ts = new TurnSystem();
   ui = new UI(new PVector (width*.75, height*.75));

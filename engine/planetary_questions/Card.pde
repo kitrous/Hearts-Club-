@@ -11,8 +11,9 @@ class Card {
   int xPos = 700;
   int yPos = 400;
   int zoneSpots = 5;
-  int zoneX = 100;
+  int zoneX = 200;
   int zoneY = 400;
+  int zoneSpacing = 100;
   
   // constructor
   Card(int x, int y) {
@@ -22,7 +23,7 @@ class Card {
 
   void battlefieldDisplay() {
     for (int i = 0; i < zoneSpots; i++) {
-      rect(zoneX, zoneY, dCWidth, dCHeight);
+      rect(zoneX + i * (dCWidth + zoneSpacing), zoneY , dCWidth, dCHeight);
     }
   }
 

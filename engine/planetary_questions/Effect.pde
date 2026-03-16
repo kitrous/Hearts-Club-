@@ -1,4 +1,5 @@
 //For special/unqiue cards
+//Mainly trying to make usable for anyone that wants to use it
 class Effect {
   
   int cardChance = int(random(1,2));

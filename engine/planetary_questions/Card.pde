@@ -10,6 +10,8 @@ class Card {
   int dCHeight = 150;
   int xPos = 700;
   int yPos = 400;
+  int exPos = 700;
+  int eyPos = 200;
 
   // constructor
   Card(int x, int y) {
@@ -25,6 +27,7 @@ class Card {
       xPos = mouseX; yPos = mouseY;
     }
     //test card viewer
+    stroke(0);
     fill(255, 255, 255);
     rect(xPos, yPos, dCWidth, dCHeight);
     fill(123, 200, 123);
@@ -32,6 +35,13 @@ class Card {
     //text stuff for cards
     textSize(cardNumSize);
     text(cardValue, xPos+25, yPos+30);
+    
+    //Enemy Card
+     fill(155,55,55);
+     stroke(100,0,0);
+    rect(exPos, eyPos, 100, 150);
+    fill(0);
+    stroke(0);
   }
   void Hovering() {
     

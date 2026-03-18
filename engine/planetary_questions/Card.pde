@@ -3,6 +3,7 @@ class Card {
   int cardValue = int(random(1, 10)); //random values
   boolean isHovering;
   boolean isDraggingCard;
+  boolean isDestroyed;
   /* so we dont just have a bunch of random numbers and the card look stay's consistent
    edit these values to change how the card looks/position etc */
   int cardNumSize = 25;
@@ -10,6 +11,9 @@ class Card {
   int dCHeight = 150;
   int xPos = 700;
   int yPos = 400;
+  
+  int tombstoneXPos;
+  int tombstoneYPos;
 
   // constructor
   Card(int x, int y) {
@@ -51,6 +55,12 @@ class Card {
     //  mouseDragged();
     //}
     
+  }
+  
+  void GoToTombstone() {
+    if (isDestroyed) {
+      
+    }
   }
   
   void mousePressed(){

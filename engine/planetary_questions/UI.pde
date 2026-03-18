@@ -32,9 +32,7 @@ class UI {
     fill(200, 255, 200);
     text("Player HP:"+player.playerHP, width*.1, height*.9);
     text("Enemy HP:"+enemy.enemyHP, width*.10, height*.1);
-    // Enemy Card Display
-    fill(255);
-    rect(width*.45, height*.2, 150, 250);
+    
     fill(0);
 
     //text(enemyCardValue+ts, width*.46,height*.225);

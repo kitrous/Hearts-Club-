@@ -12,7 +12,6 @@ class Card {
   int xPos = 700;
   int yPos = 400;
   
-  int tombstoneXPos;
   int tombstoneXPos = 25;
   int tombstoneYPos = height/2 - 150;
 

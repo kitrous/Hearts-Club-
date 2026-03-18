@@ -13,20 +13,41 @@ class Card {
   int yPos = 400;
   
   int tombstoneXPos;
-  int tombstoneYPos;
+  int tombstoneXPos = 25;
+  int tombstoneYPos = height/2 - 150;
+
+  //variables for the zones
+  //player
+  int playerZoneX = 250;
+  int playerZoneY = 400;
+  //enemy
+  int enemyZoneX = 250;
+  int enemyZoneY = 150;
+  int zoneSpacing = 100;
+  int zoneSpots = 5;
 
   // constructor
   Card(int x, int y) {
     xPos = x;
     yPos = y;
   }
-  
-  
+  // here are the zones for the player
+  void BattlefieldDisplay() {
+    //player zone
+    for (int i = 0; i < zoneSpots; i++) {
+      rect(playerZoneX + i * (dCWidth + zoneSpacing), playerZoneY, dCWidth, dCHeight);
+    }
+    //enemy zone
+    for (int i = 0; i < zoneSpots; i++) {
+      rect(enemyZoneX + i * (dCWidth + zoneSpacing), enemyZoneY, dCWidth, dCHeight);
+    }
+  }
 
   void display() {
-    if(isDraggingCard) 
+    if (isDraggingCard)
     {
-      xPos = mouseX; yPos = mouseY;
+      xPos = mouseX;
+      yPos = mouseY;
     }
     //test card viewer
     fill(255, 255, 255);
@@ -38,61 +59,64 @@ class Card {
     text(cardValue, xPos+25, yPos+30);
   }
   void Hovering() {
-    
-    if (mouseX > xPos && mouseX < xPos + dCWidth && mouseY > yPos && mouseY < yPos + dCHeight){
- 
-      if (!isDraggingCard){
+
+    if (mouseX > xPos && mouseX < xPos + dCWidth && mouseY > yPos && mouseY < yPos + dCHeight) {
+
+      if (!isDraggingCard) {
         isHovering = true;
       }
-     
-     //println("hover");
-    
+
+      //println("hover");
     } else {
       isHovering = false;
     }
-    
+
     //if (isDraggingCard){
     //  mouseDragged();
     //}
-    
   }
   
   void GoToTombstone() {
     if (isDestroyed) {
-      
+      xPos = tombstoneXPos;
+      yPos = tombstoneYPos;
     }
   }
   
-  void mousePressed(){
-    //println("hardy har har");
+  void keyPressed(){
+    isDestroyed = true;
     
-    if (isHovering){
+    GoToTombstone();
+  }
+  
+  void mousePressed() {
+    //println("hardy har har");
+
+    if (isHovering) {
       isDraggingCard = true;
       println("anything");
-      
     } else {
       //isDraggingCard = false;
-      println("anythingelse");
+      //println("anythingelse");
     }
-    
+
     //    if (isDraggingCard){
     //  mouseDragged();
     //}
   }
-  
-  void mouseReleased(){
-   if(isDraggingCard){
-    isDraggingCard=false; 
-   }
+
+  void mouseReleased() {
+    if (isDraggingCard) {
+      isDraggingCard=false;
+    }
   }
-  
+
   //void mouseDragged(){
-    
+
   //  //mousePressed();
-    
+
   //  xPos = mouseX - dCWidth/2;
   //  yPos = mouseY - dCHeight/2;
-    
+
   //}
-  
 }

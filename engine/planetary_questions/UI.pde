@@ -1,6 +1,6 @@
 class UI {
   PVector endTurnButton;
-  float buttonRadius = (width+height)*.03;
+  float buttonRadius = 75;
   boolean insideButton;
   color c = color(0, 0, 0);
   int sw = 5;
@@ -30,7 +30,7 @@ class UI {
     stroke(0);
     
     //once turn is ended the counter will go up by one
-    text("End Turn: ", endTurnButton.x-50, endTurnButton.y);
+    text("End Turn", endTurnButton.x-50, endTurnButton.y);
     fill(200, 255, 200);
     text("Player HP:"+player.playerHP, width*.1, height*.9);
     text("Enemy HP:"+enemy.enemyHP, width*.10, height*.1);

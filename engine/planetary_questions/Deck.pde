@@ -22,11 +22,8 @@ class Deck {
   }
 
   void mousePressed(){
-    //credit: following if-statement was taken from user Juno Morrow
-    //url: https://openprocessing.org/sketch/758431
-    //orig contrib: Needed to use this to detect the distance between the rect of the deck card and the mouse
+    
     if (mouseX > deckXPos && mouseX < deckXPos + deckWidth && mouseY > deckYPos && mouseY < deckYPos + deckHeight) {
-      //end credit for Juno Morrow
       
       //Deal Card, creating a new instance of a card object to be placed on the player's side of "play area"
       pCard1 = new Card(width/2, height/2 + 50); //Takes the dCard, which is from the Card class, to makes a new Card at a specific x and Y location
@@ -37,6 +34,7 @@ class Deck {
         
         cardXOffset += 200;
         defaultCard[i] = new Card(width/2 - 800 + cardXOffset, height/2 + 75);
+        //defaultCard[i].originalX
       }
 
       player.updatePlayerCard(dcard.cardValue);

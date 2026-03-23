@@ -2,8 +2,8 @@ UI ui;
 TurnSystem ts;
 Card dcard;
 Card pCard1;
-Card[] defaultCard = new Card[5];
-
+Card[] defaultCard = x
+Card selectedCard;
 //Card pCard = new Array();
 Deck ddeck;
 Player player;

@@ -44,6 +44,7 @@ class Card {
     {
       xPos = mouseX;
       yPos = mouseY;
+      selectedCard = dcard;
     }
     //test card viewer
     fill(255, 255, 255);
@@ -90,8 +91,17 @@ class Card {
 
   void mouseReleased() {
     if (isDraggingCard) {
-      isDraggingCard=false;
+       // if selected card is detecting zoneX, zoneY, zoneWidth, zoneHeight, make the selected card's x and y to the zone
+      for (int i = 0; i > defaultCard.length; i++){
+        if (defaultCard[i]){
+          defaultCard[i].originalPosX = defaultCard[i].xPos;
+        }
+      }
+       
+       
+      isDraggingCard = false;
     }
+    
   }
 
   //void mouseDragged(){

@@ -25,6 +25,11 @@ class Card {
     xPos = x;
     yPos = y;
   }
+//attempted to make a constructor for the zone as well but i dont think its possible to add two constructors, might need to make a different class for the zones or do this in the main file
+  /*Zone(int x, int y) {
+    playerZoneX = x;
+    playerZoneY = y;
+  }*/
   // here are the zones for the player
   void BattlefieldDisplay() {
     //player zone
@@ -37,7 +42,7 @@ class Card {
     }
   }
 
-  
+
 
   void display() {
     if (isDraggingCard)
@@ -78,10 +83,10 @@ class Card {
 
     if (isHovering) {
       isDraggingCard = true;
-      println("anything");
+      //println("anything");
     } else {
       //isDraggingCard = false;
-      println("anythingelse");
+      //println("anythingelse");
     }
 
     //    if (isDraggingCard){
@@ -91,17 +96,19 @@ class Card {
 
   void mouseReleased() {
     if (isDraggingCard) {
-       // if selected card is detecting zoneX, zoneY, zoneWidth, zoneHeight, make the selected card's x and y to the zone
-      for (int i = 0; i > defaultCard.length; i++){
-        if (defaultCard[i]){
-          defaultCard[i].originalPosX = defaultCard[i].xPos;
+      // if selected card is detecting zoneX, zoneY, zoneWidth, zoneHeight, make the selected card's x and y to the zone
+
+      for (int i = 0; i > defaultCard.length; i++) {
+        if (abs(playerZoneX - defaultCard[i].xPos) < dCWidth && abs(playerZoneY - defaultCard[i].yPos) < dCHeight) {
+          defaultCard[i].xPos = playerZoneX;
+          defaultCard[i].yPos = playerZoneY;
+          println("detected");
         }
       }
-       
-       
+
+
       isDraggingCard = false;
     }
-    
   }
 
   //void mouseDragged(){

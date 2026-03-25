@@ -13,6 +13,7 @@ class Card {
   int dCHeight = 150;
   int xPos = 700;
   int yPos = 400;
+  int startX, startY;
   
   int tombstoneXPos = 25;
   int tombstoneYPos = height/2 - 150;
@@ -33,6 +34,8 @@ class Card {
   Card(int x, int y) {
     xPos = x;
     yPos = y;
+    startX = x;
+    startY = y;
   }
   // here are the zones for the player
   void BattlefieldDisplay() {
@@ -51,6 +54,11 @@ class Card {
     {
       this.xPos = mouseX;
       this.yPos = mouseY;
+    }
+    else
+    {
+      xPos = startX;
+      yPos = startY;
     }
     //test card viewer
     stroke(0);

@@ -6,9 +6,28 @@ class Effect {
   int specialCardValue = int(random(11,15));
   int specialCard;
   //find a way to make these the options for the card chance
-  int heal = 2;
-  int damage = 2;
+  int heal = int(random(1,3));
+  int damage = int(random(1,3));
   int normalCardValue = 1;
+  boolean isNormal;
+  
+  
+  void cardStatus() {
+    
+    if (cardChance == 1) {
+      isNormal = true;
+    }
+    else if (cardChance == 2) {
+      isNormal = false;
+    }
+    
+    if (isNormal) {
+      normalCard();
+    }
+    else {
+      specialCard();
+    }
+  }
   
   void specialCard() {
     //I want this to choose at random if the special card damages or heals
@@ -22,11 +41,6 @@ class Effect {
   }
   
   void normalCard() {
-    
-    //I want this to be able to tell the difference between normal and special card
-    if (normalCardValue >= 1) {
-    
-    }
-    
+    //Have fucntionality where the card has attack damage values
   }
 }

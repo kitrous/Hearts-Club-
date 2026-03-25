@@ -1,9 +1,11 @@
 class Card {
 
   int cardValue = int(random(1, 10)); //random values
+  Effect cardE;
   boolean isHovering;
   boolean isDraggingCard;
   boolean isDestroyed;
+  boolean selectedCard;
   /* so we dont just have a bunch of random numbers and the card look stay's consistent
    edit these values to change how the card looks/position etc */
   int cardNumSize = 25;
@@ -43,10 +45,10 @@ class Card {
   }
 
   void display() {
-    if (isDraggingCard)
+    if (this.isDraggingCard)
     {
-      xPos = mouseX;
-      yPos = mouseY;
+      this.xPos = mouseX;
+      this.yPos = mouseY;
     }
     //test card viewer
     fill(255, 255, 255);
@@ -59,15 +61,15 @@ class Card {
   }
   void Hovering() {
 
-    if (mouseX > xPos && mouseX < xPos + dCWidth && mouseY > yPos && mouseY < yPos + dCHeight) {
+    if (mouseX > this.xPos && mouseX < this.xPos + dCWidth && mouseY > this.yPos && mouseY < this.yPos + dCHeight) {
 
-      if (!isDraggingCard) {
-        isHovering = true;
+      if (!this.isDraggingCard && !this.isDestroyed) {
+        this.isHovering = true;
       }
 
       //println("hover");
     } else {
-      isHovering = false;
+      this.isHovering = false;
     }
 
     //if (isDraggingCard){
@@ -76,14 +78,14 @@ class Card {
   }
   
   void GoToTombstone() {
-    if (isDestroyed) {
-      xPos = tombstoneXPos;
-      yPos = tombstoneYPos;
+    if (this.isDestroyed) {
+      this.xPos = tombstoneXPos;
+      this.yPos = tombstoneYPos;
     }
   }
   
   void keyPressed(){
-    isDestroyed = true;
+    this.isDestroyed = true;
     
     GoToTombstone();
   }
@@ -91,8 +93,8 @@ class Card {
   void mousePressed() {
     //println("hardy har har");
 
-    if (isHovering) {
-      isDraggingCard = true;
+    if (this.isHovering) {
+      this.isDraggingCard = true;
       println("anything");
     } else {
       //isDraggingCard = false;
@@ -105,8 +107,8 @@ class Card {
   }
 
   void mouseReleased() {
-    if (isDraggingCard) {
-      isDraggingCard=false;
+    if (this.isDraggingCard) {
+      this.isDraggingCard=false;
     }
   }
 

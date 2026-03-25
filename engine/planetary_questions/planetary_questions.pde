@@ -36,7 +36,7 @@ void setup() {
    
 
   ts = new TurnSystem();
-  ui = new UI(new PVector (width*.75, height*.75));
+  ui = new UI(new PVector (1400, 900));
   player = new Player();
   enemy = new Enemy();
 }

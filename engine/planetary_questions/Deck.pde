@@ -1,10 +1,10 @@
 
 class Deck {
 
-  float deckXPos = width*.7;
-  float deckYPos = height*.3;
-  float deckWidth = (width+height)*.05;
-  float deckHeight = (width+height)*.075;
+  float deckXPos = 1050;
+  float deckYPos = 300;
+  float deckWidth = 100;
+  float deckHeight = 150;
   //  int deckXPos = 1000; //The deck's X Position
   //  int deckYPos = 400; // The deck's Y Position
   //int deckWidth = 150; //The deck's width size to be displayed on the "play area"

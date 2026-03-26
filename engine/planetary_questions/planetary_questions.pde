@@ -27,8 +27,8 @@ void setup() {
   ddeck = new Deck();
 
   dcard = new Card(2100, 2600);
-  pCard1 = new Card (2100, 2600);
-  ddeck = new Deck(1100, 600);
+  //pCard1 = new Card (width/2, height/2);
+  ddeck = new Deck(width/2 + 500, height/2 + 100);
   
   for (int i = 0; i < defaultCard.length; i++){
         defaultCard[i] = new Card(width/2 + 1000, height/2 + 400);
@@ -36,7 +36,7 @@ void setup() {
    
 
   ts = new TurnSystem();
-  ui = new UI(new PVector (1400, 900));
+  ui = new UI(new PVector (width/2 + 550, height/2));
   player = new Player();
   enemy = new Enemy();
 }
@@ -47,6 +47,7 @@ void draw() {
   dcard.BattlefieldDisplay();
   //dcard.display();
   //pCard1.display();
+  //pCard1.Hovering();
   
   for (int i = 0; i < defaultCard.length; i++){
     defaultCard[i].display();
@@ -68,6 +69,7 @@ void draw() {
 void mousePressed() {
 
   ddeck.mousePressed();
+  pCard1.mousePressed();
   
   ui.mousePressed();
   for (int i = 0; i < defaultCard.length; i++){

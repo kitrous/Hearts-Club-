@@ -6,6 +6,10 @@ class Card {
   boolean isDraggingCard;
   boolean isDestroyed;
   boolean selectedCard;
+  boolean isAttacking; //boolean to track whether a card is attacking
+  boolean inZone; //boolean to track if a card is in a zone
+  boolean canSelectTarget; //boolean to track if a card that "isAttacking" can select a card to attack
+  Card opponentCard; /*A card object that would be the opponent card that this card is attacking.
   /* so we dont just have a bunch of random numbers and the card look stay's consistent
    edit these values to change how the card looks/position etc */
   int cardNumSize = 25;
@@ -14,6 +18,7 @@ class Card {
   int xPos = 700;
   int yPos = 400;
   int startX, startY;
+  int cardHealth; //int to track the card's health
   
   int tombstoneXPos = 25;
   int tombstoneYPos = height/2 - 150;
@@ -52,8 +57,8 @@ class Card {
   void display() {
     if (this.isDraggingCard)
     {
-      this.xPos = mouseX;
-      this.yPos = mouseY;
+      this.xPos = mouseX - dCWidth/2;
+      this.yPos = mouseY - dCHeight/2;
     }
     else
     {
@@ -111,14 +116,22 @@ class Card {
   void mousePressed() {
     //println("hardy har har");
 
-    if (this.isHovering) {
+    if (this.isHovering && !inZone) {
       this.isDraggingCard = true;
       println("anything");
-    } else {
-      //isDraggingCard = false;
-      //println("anythingelse");
     }
-
+    
+    if (this.isHovering && inZone && !isAttacking && !selectedCard) {
+      println(this + " is Attacking");
+      println(this + " is Selected");
+      
+      this.isAttacking = true;
+      this.selectedCard = true;
+    }
+    
+    if (isAttacking) {
+      canSelectTarget = true;
+    }
     //    if (isDraggingCard){
     //  mouseDragged();
     //}
@@ -127,6 +140,11 @@ class Card {
   void mouseReleased() {
     if (this.isDraggingCard) {
       this.isDraggingCard=false;
+      
+    }
+    
+    if (ts.playerTurn && isAttacking) {
+      
     }
   }
 

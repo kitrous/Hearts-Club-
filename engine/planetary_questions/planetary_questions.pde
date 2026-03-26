@@ -4,7 +4,7 @@ Card dcard;
 Card pCard1;
 Card[] defaultCard = new Card[5];
 Card selectedCard;
-Zone zones;
+Zone[] zones = new Zone[5];
 //Card pCard = new Array();
 Deck ddeck;
 Player player;
@@ -26,7 +26,7 @@ void setup() {
   dcard = new Card(100, 600);
   //ddeck = new Deck(1100, 600);
   ddeck = new Deck();
-  zones = new Zone();
+  
   dcard = new Card(2100, 2600);
   pCard1 = new Card (2100, 2600);
   ddeck = new Deck(1100, 600);
@@ -34,7 +34,9 @@ void setup() {
   for (int i = 0; i < defaultCard.length; i++){
         defaultCard[i] = new Card(width/2 + 1000, height/2 + 400);
       }
-   
+  for (int i = 0; i < zones.length; i++){
+      zones[i] = new Zone();
+  }
 
   ts = new TurnSystem();
   ui = new UI(new PVector (width*.75, height*.75));

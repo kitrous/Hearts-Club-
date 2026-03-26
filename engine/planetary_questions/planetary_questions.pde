@@ -4,7 +4,7 @@ Card dcard;
 Card pCard1;
 Card[] defaultCard = new Card[5];
 Card selectedCard;
-
+Zone zones;
 //Card pCard = new Array();
 Deck ddeck;
 Player player;
@@ -26,7 +26,7 @@ void setup() {
   dcard = new Card(100, 600);
   //ddeck = new Deck(1100, 600);
   ddeck = new Deck();
-
+  zones = new Zone();
   dcard = new Card(2100, 2600);
   pCard1 = new Card (2100, 2600);
   ddeck = new Deck(1100, 600);
@@ -46,9 +46,9 @@ void draw() {
   background(100);
   
   //dcard.BattlefieldDisplay();
-  dcard.display();
-  pCard1.display();
-  
+  //dcard.display();
+  //pCard1.display();
+  zones.zonesDisplay();
   for (int i = 0; i < defaultCard.length; i++){
     defaultCard[i].display();
     defaultCard[i].Hovering();

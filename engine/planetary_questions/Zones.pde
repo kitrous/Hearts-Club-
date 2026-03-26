@@ -11,9 +11,7 @@ class Zone {
   int zoneSpacing = 100;
   int zoneSpots = 5;
   
-  Zone(int x, int y){
-  playerZoneX = x;
-  playerZoneY = y;
+  Zone(){
   }
   void zonesDisplay() {
   // displayed both zones in one method to reduce the number of referencing in the main file

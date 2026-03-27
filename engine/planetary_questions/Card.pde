@@ -17,21 +17,13 @@ class Card {
   int dCHeight = 150;
   int xPos = 700;
   int yPos = 400;
+
   int startX, startY;
   int cardHealth; //int to track the card's health
   
   int tombstoneXPos = 25;
   int tombstoneYPos = height/2 - 150;
 
-  //variables for the zones
-  //player
-  int playerZoneX = 250;
-  int playerZoneY = 400;
-  //enemy
-  int enemyZoneX = 250;
-  int enemyZoneY = 150;
-  int zoneSpacing = 100;
-  int zoneSpots = 5;
   int exPos = 700;
   int eyPos = 200;
 
@@ -41,17 +33,6 @@ class Card {
     yPos = y;
     startX = x;
     startY = y;
-  }
-  // here are the zones for the player
-  void BattlefieldDisplay() {
-    //player zone
-    for (int i = 0; i < zoneSpots; i++) {
-      rect(playerZoneX + i * (dCWidth + zoneSpacing), playerZoneY, dCWidth, dCHeight);
-    }
-    //enemy zone
-    for (int i = 0; i < zoneSpots; i++) {
-      rect(enemyZoneX + i * (dCWidth + zoneSpacing), enemyZoneY, dCWidth, dCHeight);
-    }
   }
 
   void display() {
@@ -64,6 +45,8 @@ class Card {
     {
       xPos = startX;
       yPos = startY;
+
+      //selectedCard = this.;
     }
     //test card viewer
     stroke(0);
@@ -136,24 +119,15 @@ class Card {
     //  mouseDragged();
     //}
   }
+  
 
   void mouseReleased() {
     if (this.isDraggingCard) {
       this.isDraggingCard=false;
-      
     }
     
     if (ts.playerTurn && isAttacking) {
-      
+    
     }
   }
-
-  //void mouseDragged(){
-
-  //  //mousePressed();
-
-  //  xPos = mouseX - dCWidth/2;
-  //  yPos = mouseY - dCHeight/2;
-
-  //}
 }

@@ -26,13 +26,15 @@ class Zone {
 
   void playerZoneDisplay() {
     for (int i = 0; i < zoneSpots; i++) {
+      stroke(0);
+      fill(0);
       rect(playerZoneX + i * (zoneWidth + zoneSpacing), playerZoneY, zoneWidth, zoneHeight);
-      //fill(111,111,111);
-      //rect(playerZoneX, playerZoneY, zoneWidth, zoneHeight);
     }
   }
   void enemyZoneDisplay() {
     for (int i = 0; i < zoneSpots; i++) {
+      stroke(0);
+      fill(0);
       rect(enemyZoneX + i * (zoneWidth + zoneSpacing), enemyZoneY, zoneWidth, zoneHeight);
     }
   }

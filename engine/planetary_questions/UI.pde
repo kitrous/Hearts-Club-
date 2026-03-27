@@ -30,10 +30,10 @@ class UI {
     stroke(0);
     
     //once turn is ended the counter will go up by one
-    text("End Turn", endTurnButton.x-50, endTurnButton.y);
+    text("End Turn", endTurnButton.x, endTurnButton.y);
     fill(200, 255, 200);
-    text("Player HP:"+player.playerHP, width*.1, height*.9);
-    text("Enemy HP:"+enemy.enemyHP, width*.10, height*.1);
+    text("Player HP:"+player.playerHP, width*.06, height*.7);
+    text("Enemy HP:"+enemy.enemyHP, width*.06, height*.1);
     
     fill(0);
 
@@ -58,7 +58,7 @@ class UI {
     //} else {
     //  mousClickedReleased = true;
     //}
-    if (insideButton == true)
+    if (insideButton == true && defaultCard[0].inZone == true && defaultCard[1].inZone == true && defaultCard[2].inZone == true && defaultCard[3].inZone == true && defaultCard[4].inZone == true)
     {
       ts.endTurn();
       c = color(0, 0, 0);
@@ -69,7 +69,7 @@ class UI {
 
   void mousePressed()
   {
-    if (insideButton == true)
+    if (insideButton == true && defaultCard[0].inZone == true && defaultCard[1].inZone == true && defaultCard[2].inZone == true && defaultCard[3].inZone == true && defaultCard[4].inZone == true)
     {
       c = color(255, 0, 0);
       sw = 15;

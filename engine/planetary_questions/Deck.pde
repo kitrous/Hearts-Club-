@@ -55,6 +55,7 @@ class Deck {
         
         cardXOffset += 100;
         enemyCard[i] = new Card(width/2 - 200 + cardXOffset, height/2 - 500);
+        enemyCard[i].isEnemy = true;
         //defaultCard[i].originalX
       }
     ts.endTurn();
@@ -62,9 +63,10 @@ class Deck {
 
   //A function to Visualize the Deck. Something similar to Display from the Card class
   void showDeck() {
+    stroke(0);
     fill(deckColorR, deckColorG, deckColorB);
     rect(deckXPos, deckYPos, deckWidth, deckHeight);
     fill(0);
-    text("Deck", deckXPos, deckYPos+25);
+    text("Deck", deckXPos + 50, deckYPos+25);
   }
 }

@@ -4,7 +4,7 @@ Card dcard;
 Card pCard1;
 Card[] enemyCard = new Card[5];
 Card[] defaultCard = new Card[5];
-Card selectedCard;
+//Card selectedCard;
 Zone[] zones = new Zone[5];
 //Zone zones;
 //Card pCard = new Array();
@@ -33,10 +33,12 @@ void setup() {
   
   for (int i = 0; i < enemyCard.length; i++) {
         enemyCard[i] = new Card(width/2 + 500, height/2 - 300);
+        enemyCard[i].isEnemy = true;
   }
   
   for (int i = 0; i < defaultCard.length; i++) {
         defaultCard[i] = new Card(width/2 + 1000, height/2 + 400);
+        defaultCard[i].isPlayer = true;
   }
   for (int i = 0; i < zones.length; i++){
       zones[i] = new Zone(width/2, height/2);
@@ -63,6 +65,7 @@ void draw() {
   
   for (int i = 0; i < enemyCard.length; i++) {
         enemyCard[i].display();
+        enemyCard[i].Hovering();
         enemyCard[i].GoToTombstone();
   }
   
@@ -77,10 +80,11 @@ void draw() {
   ddeck.showDeck();
   ui.run();
   enemy.updateTurn();
+  ts.gameOverDisplay();
   //println(ui.sw);
   //fill(0);
   
-  gameTimer.calcTime();
+  //gameTimer.calcTime();
   
 }
 
@@ -94,6 +98,10 @@ void mousePressed() {
     defaultCard[i].display();
     defaultCard[i].Hovering();
     defaultCard[i].mousePressed();
+  }
+  
+  for (int i = 0; i < enemyCard.length; i++) {
+    enemyCard[i].mousePressed();
   }
 }
 
@@ -138,6 +146,6 @@ void mouseDragged() {
 void keyPressed(){
   for (int i = 0; i < defaultCard.length; i++){
 
-    defaultCard[i].keyPressed();
+    //defaultCard[i].keyPressed();
   }
 }

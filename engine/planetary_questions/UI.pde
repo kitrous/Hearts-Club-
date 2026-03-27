@@ -1,6 +1,6 @@
 class UI {
   PVector endTurnButton;
-  float buttonRadius = (width+height)*.03;
+  float buttonRadius = 75;
   boolean insideButton;
   color c = color(0, 0, 0);
   int sw = 5;
@@ -20,23 +20,24 @@ class UI {
     stroke(c);
     strokeWeight(sw);
     
+    //End Turn Button
     fill(200, 255, 200);
-    ellipse(endTurnButton.x*1.2, endTurnButton.y*1.2, buttonRadius*2, buttonRadius*2);
+    ellipse(endTurnButton.x, endTurnButton.y, buttonRadius*2, buttonRadius*2);
     fill(0);
     textSize(25);
     
     strokeWeight(5);
     stroke(0);
+    
     //once turn is ended the counter will go up by one
-    text("End Turn: ", endTurnButton.x-50, endTurnButton.y);
+    text("End Turn", endTurnButton.x, endTurnButton.y);
     fill(200, 255, 200);
-    text("Player HP:"+player.playerHP, width*.1, height*.9);
-    text("Enemy HP:"+enemy.enemyHP, width*.10, height*.1);
-    // Enemy Card Display
-    fill(255);
-    rect(width*.45, height*.2, 150, 250);
+    text("Player HP:"+player.playerHP, width*.06, height*.7);
+    text("Enemy HP:"+enemy.enemyHP, width*.06, height*.1);
+    
     fill(0);
 
+   
     //text(enemyCardValue+ts, width*.46,height*.225);
   }
 
@@ -57,7 +58,7 @@ class UI {
     //} else {
     //  mousClickedReleased = true;
     //}
-    if (insideButton == true)
+    if (insideButton == true && defaultCard[0].inZone == true && defaultCard[1].inZone == true && defaultCard[2].inZone == true && defaultCard[3].inZone == true && defaultCard[4].inZone == true)
     {
       ts.endTurn();
       c = color(0, 0, 0);
@@ -68,7 +69,7 @@ class UI {
 
   void mousePressed()
   {
-    if (insideButton == true)
+    if (insideButton == true && defaultCard[0].inZone == true && defaultCard[1].inZone == true && defaultCard[2].inZone == true && defaultCard[3].inZone == true && defaultCard[4].inZone == true)
     {
       c = color(255, 0, 0);
       sw = 15;

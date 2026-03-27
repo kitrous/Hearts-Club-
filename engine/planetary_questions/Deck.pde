@@ -1,10 +1,13 @@
 
 class Deck {
 
-  float deckXPos = width*.7;
-  float deckYPos = height*.3;
-  float deckWidth = (width+height)*.05;
-  float deckHeight = (width+height)*.075;
+  float deckXPos = 1050;
+  float deckYPos = 300;
+  float deckWidth = 100;
+  float deckHeight = 150;
+  int deckColorR;
+  int deckColorG;
+  int deckColorB;
   //  int deckXPos = 1000; //The deck's X Position
   //  int deckYPos = 400; // The deck's Y Position
   //int deckWidth = 150; //The deck's width size to be displayed on the "play area"
@@ -16,39 +19,54 @@ class Deck {
     //deckYPos = my;
   int cardXOffset = 0;
   
-  Deck(int mx, int my) {
+  Deck(int mx, int my, int dColorR, int dColorG, int dColorB) {
     deckXPos = mx;
     deckYPos = my;
+    
+    deckColorR = dColorR;
+    deckColorG = dColorG;
+    deckColorB = dColorB;
   }
 
   void mousePressed(){
-    //credit: following if-statement was taken from user Juno Morrow
-    //url: https://openprocessing.org/sketch/758431
-    //orig contrib: Needed to use this to detect the distance between the rect of the deck card and the mouse
+    
     if (mouseX > deckXPos && mouseX < deckXPos + deckWidth && mouseY > deckYPos && mouseY < deckYPos + deckHeight) {
-      //end credit for Juno Morrow
       
       //Deal Card, creating a new instance of a card object to be placed on the player's side of "play area"
-      pCard1 = new Card(width/2, height/2 + 50); //Takes the dCard, which is from the Card class, to makes a new Card at a specific x and Y location
       for (int i = 0; i < defaultCard.length; i++){
         if (i == 0){
           cardXOffset = 0;
         }
         
-        cardXOffset += 200;
-        defaultCard[i] = new Card(width/2 - 800 + cardXOffset, height/2 + 50);
+        cardXOffset += 100;
+        defaultCard[i] = new Card(width/2 - 200 + cardXOffset, height/2 + 75);
+        //defaultCard[i].originalX
       }
 
-      player.updatePlayerCard(dcard.cardValue);
-      ts.endTurn();
+      //player.updatePlayerCard(dcard.cardValue);
     }
+  }
+  
+  void enemyDraw() {
+    for (int i = 0; i < enemyCard.length; i++){
+        if (i == 0){
+          cardXOffset = 0;
+        }
+        
+        cardXOffset += 100;
+        enemyCard[i] = new Card(width/2 - 200 + cardXOffset, height/2 - 500);
+        enemyCard[i].isEnemy = true;
+        //defaultCard[i].originalX
+      }
+    ts.endTurn();
   }
 
   //A function to Visualize the Deck. Something similar to Display from the Card class
   void showDeck() {
-    fill(123, 200, 123);
+    stroke(0);
+    fill(deckColorR, deckColorG, deckColorB);
     rect(deckXPos, deckYPos, deckWidth, deckHeight);
     fill(0);
-    text("Deck", deckXPos, deckYPos+25);
+    text("Deck", deckXPos + 50, deckYPos+25);
   }
 }

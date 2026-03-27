@@ -41,7 +41,7 @@ class Card {
       this.xPos = mouseX - dCWidth/2;
       this.yPos = mouseY - dCHeight/2;
     }
-    else
+    else if (!inZone)
     {
       xPos = startX;
       yPos = startY;
@@ -57,13 +57,6 @@ class Card {
     //text stuff for cards
     textSize(cardNumSize);
     text(cardValue, xPos+25, yPos+30);
-    
-    //Enemy Card
-     fill(155,55,55);
-     stroke(100,0,0);
-    rect(exPos, eyPos, 100, 150);
-    fill(0);
-    stroke(0);
   }
   void Hovering() {
 

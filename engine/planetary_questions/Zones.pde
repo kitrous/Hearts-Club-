@@ -14,6 +14,9 @@ class Zone {
   Zone(int x, int y){
     playerZoneX = x;
     playerZoneY = y;
+    
+    enemyZoneX = x;
+    enemyZoneY = y - 250;
   }
   void zonesDisplay() {
   // displayed both zones in one method to reduce the number of referencing in the main file
@@ -24,6 +27,8 @@ class Zone {
   void playerZoneDisplay() {
     for (int i = 0; i < zoneSpots; i++) {
       rect(playerZoneX + i * (zoneWidth + zoneSpacing), playerZoneY, zoneWidth, zoneHeight);
+      //fill(111,111,111);
+      //rect(playerZoneX, playerZoneY, zoneWidth, zoneHeight);
     }
   }
   void enemyZoneDisplay() {

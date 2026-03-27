@@ -32,7 +32,7 @@ void setup() {
   ddeck = new Deck(width/2 + 500, height/2 + 100, 123, 200, 123);
   
   for (int i = 0; i < enemyCard.length; i++) {
-        enemyCard[i] = new Card(width/2 + 500, height/2 - 300);
+        enemyCard[i] = new Card(width/2 + 2500, height/2 - 2300);
         enemyCard[i].isEnemy = true;
   }
   

@@ -4,6 +4,7 @@ class UI {
   boolean insideButton;
   color c = color(0, 0, 0);
   int sw = 5;
+  String turnTextStatus;
   //constructor
   UI(PVector pos)
   {

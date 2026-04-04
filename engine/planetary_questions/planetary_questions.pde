@@ -2,6 +2,7 @@ UI ui;
 TurnSystem ts;
 Card dcard;
 Card pCard1;
+
 Card[] enemyCard = new Card[5];
 Card[] defaultCard = new Card[5];
 //Card selectedCard;
@@ -22,6 +23,10 @@ void setup() {
   pixelDensity(1);
   size(1500,1000);
   //fullScreen();
+  //rectMode(CENTER);
+  textAlign(CENTER);
+  
+  addEffects();
   
   gameTimer = new Timer();
 
@@ -32,13 +37,15 @@ void setup() {
   ddeck = new Deck(width/2 + 500, height/2 + 100, 123, 200, 123);
   
   for (int i = 0; i < enemyCard.length; i++) {
-        enemyCard[i] = new Card(width/2 + 2500, height/2 - 2300);
-        enemyCard[i].isEnemy = true;
+    Effect e = cardEffects.get(int(random(0, 3)));
+    enemyCard[i] = new Card(width/2 + 2500, height/2 - 2300, 100, 150, color (123, 200, 123), 2, e);
+    enemyCard[i].isEnemy = true;
   }
   
   for (int i = 0; i < defaultCard.length; i++) {
-        defaultCard[i] = new Card(width/2 + 1000, height/2 + 400);
-        defaultCard[i].isPlayer = true;
+    Effect e = cardEffects.get(int(random(0, 3)));
+    defaultCard[i] = new Card(width/2 + 1000, height/2 + 400, 100, 150, color (123, 200, 123), 2, e);
+    defaultCard[i].isPlayer = true;
   }
   for (int i = 0; i < zones.length; i++){
       zones[i] = new Zone(width/2, height/2);
@@ -116,7 +123,7 @@ void mouseReleased(){
   } 
   
   for (int i = 0; i < zones.length; i++) {
-    if (zones[i].playerZoneX + i * (zones[i].zoneWidth + zones[i].zoneSpacing) > defaultCard[i].xPos && zones[i].playerZoneX + i * (zones[i].zoneWidth + zones[i].zoneSpacing) < defaultCard[i].xPos + defaultCard[i].dCWidth && zones[i].playerZoneY > defaultCard[i].yPos && zones[i].playerZoneY < defaultCard[i].yPos + defaultCard[i].dCHeight) {
+    if (zones[i].playerZoneX + i * (zones[i].zoneWidth + zones[i].zoneSpacing) > defaultCard[i].xPos && zones[i].playerZoneX + i * (zones[i].zoneWidth + zones[i].zoneSpacing) < defaultCard[i].xPos + defaultCard[i].cardWidth && zones[i].playerZoneY > defaultCard[i].yPos && zones[i].playerZoneY < defaultCard[i].yPos + defaultCard[i].cardHeight) {
       defaultCard[i].xPos = zones[i].playerZoneX + i * (zones[i].zoneWidth + zones[i].zoneSpacing);
       defaultCard[i].yPos = zones[i].playerZoneY;
       defaultCard[i].inZone = true;

@@ -14,7 +14,6 @@ class TurnSystem {
     textSize(200);
     stroke(0);
     fill(gameOverColor);
-    textAlign(CENTER);
     text(gameOverText, width/2, height/2, 100);
   }
 

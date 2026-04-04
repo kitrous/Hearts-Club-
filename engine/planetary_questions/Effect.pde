@@ -11,6 +11,19 @@ class Effect {
   int normalCardValue = 1;
   boolean isNormal;
   
+  String effectName;
+  String effectDescription;
+  int effectValue;
+  
+  Effect(String _effectName, String _effectDescription, int _effectValue) {
+    
+    effectName = _effectName;
+    effectDescription = _effectDescription;
+    effectValue = _effectValue;
+    
+    //if ()
+  }
+  
   
   void cardStatus() {
     

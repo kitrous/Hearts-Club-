@@ -37,9 +37,10 @@ class Deck {
         if (i == 0){
           cardXOffset = 0;
         }
+        Effect e = cardEffects.get(int(random(0, cardEffects.size())));
         
         cardXOffset += 100;
-        defaultCard[i] = new Card(width/2 - 200 + cardXOffset, height/2 + 75);
+        defaultCard[i] = new Card(width/2 - 200 + cardXOffset, height/2 + 75, 100, 150, color (123, 200, 123), 2, e);
         //defaultCard[i].originalX
       }
 
@@ -52,9 +53,10 @@ class Deck {
         if (i == 0){
           cardXOffset = 0;
         }
+        Effect e = cardEffects.get(int(random(0, cardEffects.size())));
         
         cardXOffset += 100;
-        enemyCard[i] = new Card(width/2 - 200 + cardXOffset, height/2 - 500);
+        enemyCard[i] = new Card(width/2 - 200 + cardXOffset, height/2 - 500, 100, 150, color (123, 200, 123), 2, e);
         enemyCard[i].isEnemy = true;
         //defaultCard[i].originalX
       }

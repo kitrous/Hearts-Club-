@@ -15,12 +15,10 @@ class Card {
   /* so we dont just have a bunch of random numbers and the card look stay's consistent
    edit these values to change how the card looks/position etc */
   int cardNumSize = 25;
-  int dCWidth = 100;
-  int dCHeight = 150;
-  int xPos = 700;
-  int yPos = 400;
+  float cardWidth, cardHeight;
+  float xPos, yPos;
 
-  int startX, startY;
+  float startX, startY;
   int cardHealth; //int to track the card's health
   
   int tombstoneXPos = 25;
@@ -28,21 +26,31 @@ class Card {
 
   int exPos = 700;
   int eyPos = 200;
+  
+  color cardColor;
   color cardStroke = color (0, 0, 0);
+  Effect cardEffect;
 
   // constructor
-  Card(int x, int y) {
-    xPos = x;
-    yPos = y;
-    startX = x;
-    startY = y;
+  Card(float _xPos, float _yPos, float _cardWidth, float _cardHeight, color _cardColor, int _cardHealth, Effect _cardEffect) {
+    xPos = _xPos;
+    yPos = _yPos;
+    
+    startX = _xPos;
+    startY = _yPos;
+    
+    cardWidth = _cardWidth;
+    cardHeight = _cardHeight;
+    cardColor = _cardColor;
+    cardHealth = _cardHealth;
+    cardEffect = _cardEffect;
   }
 
   void display() {
     if (this.isDraggingCard)
     {
-      this.xPos = mouseX - dCWidth/2;
-      this.yPos = mouseY - dCHeight/2;
+      this.xPos = mouseX - cardWidth/2;
+      this.yPos = mouseY - cardHeight/2;
     }
     else if (!inZone)
     {
@@ -54,16 +62,28 @@ class Card {
     //test card viewer
     stroke(cardStroke);
     fill(255, 255, 255);
-    rect(xPos, yPos, dCWidth, dCHeight);
+    rect(xPos, yPos, cardWidth, cardHeight, 15);
     fill(123, 200, 123);
-
+    
     //text stuff for cards
     textSize(cardNumSize);
     text(cardValue, xPos+25, yPos+30);
+    textSize(15);
+    text(cardEffect.effectName, xPos + cardWidth/2, yPos + cardHeight/2);
+    
+    
+    //fill(cardColor);
+    //rect(xPos, yPos, cardWidth, cardHeight, 15);
+    
+    //fill(255);
+    //textSize(cardNumSize);
+    //strokeWeight(5);
+    //stroke(cardStroke);
+    //text(cardEffect.effectName, xPos + cardWidth/2, yPos + cardHeight/2);
   }
   void Hovering() {
 
-    if (mouseX > this.xPos && mouseX < this.xPos + dCWidth && mouseY > this.yPos && mouseY < this.yPos + dCHeight) {
+    if (mouseX > this.xPos && mouseX < this.xPos + cardWidth && mouseY > this.yPos && mouseY < this.yPos + cardHeight) {
 
       if (!this.isDraggingCard && !this.isDestroyed) {
         this.isHovering = true;

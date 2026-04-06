@@ -26,16 +26,36 @@ class Zone {
 
   void playerZoneDisplay() {
     for (int i = 0; i < zoneSpots; i++) {
+      if (i == 0) {
+        zoneSpacing = 0;
+      }
+      
+      zoneSpacing += 200;
       stroke(0);
       fill(0);
-      rect(playerZoneX + i * (zoneWidth + zoneSpacing), playerZoneY, zoneWidth, zoneHeight);
+      rect(playerZoneX + zoneSpacing, playerZoneY, zoneWidth, zoneHeight);
     }
+    
+    //stroke(0);
+    //fill(0);
+    //rect(playerZoneX, playerZoneY, zoneWidth, zoneHeight);
   }
   void enemyZoneDisplay() {
+    //for (int i = 0; i < zoneSpots; i++) {
+    //  stroke(0);
+    //  fill(0);
+    //  rect(enemyZoneX + i * (zoneWidth + zoneSpacing), enemyZoneY, zoneWidth, zoneHeight);
+    //}
+    
     for (int i = 0; i < zoneSpots; i++) {
+      if (i == 0) {
+        zoneSpacing = 0;
+      }
+      
+      zoneSpacing += 200;
       stroke(0);
       fill(0);
-      rect(enemyZoneX + i * (zoneWidth + zoneSpacing), enemyZoneY, zoneWidth, zoneHeight);
+      rect(enemyZoneX + zoneSpacing, enemyZoneY, zoneWidth, zoneHeight);
     }
   }
 }

@@ -47,9 +47,9 @@ void setup() {
     defaultCard[i] = new Card(width/2 + 1000, height/2 + 400, 100, 150, color (123, 200, 123), 2, e);
     defaultCard[i].isPlayer = true;
   }
-  for (int i = 0; i < zones.length; i++){
-      zones[i] = new Zone(width/2, height/2);
-      zones[i].zonesDisplay();
+  for (int i = 0; i < zones.length; i++) {
+    
+    zones[i] = new Zone(width/2 - 750, height/2);
   }
 
   ts = new TurnSystem();
@@ -66,7 +66,6 @@ void draw() {
   //pCard1.display();
   //zones.zonesDisplay();
   for (int i = 0; i < zones.length; i++){
-      zones[i] = new Zone(width/100 + 200, height/2 - 200);
       zones[i].zonesDisplay();
   }
   
@@ -123,8 +122,8 @@ void mouseReleased(){
   } 
   
   for (int i = 0; i < zones.length; i++) {
-    if (zones[i].playerZoneX + i * (zones[i].zoneWidth + zones[i].zoneSpacing) > defaultCard[i].xPos && zones[i].playerZoneX + i * (zones[i].zoneWidth + zones[i].zoneSpacing) < defaultCard[i].xPos + defaultCard[i].cardWidth && zones[i].playerZoneY > defaultCard[i].yPos && zones[i].playerZoneY < defaultCard[i].yPos + defaultCard[i].cardHeight) {
-      defaultCard[i].xPos = zones[i].playerZoneX + i * (zones[i].zoneWidth + zones[i].zoneSpacing);
+    if (zones[i].playerZoneX > defaultCard[i].xPos && zones[i].playerZoneX < defaultCard[i].xPos + defaultCard[i].cardWidth && zones[i].playerZoneY > defaultCard[i].yPos && zones[i].playerZoneY < defaultCard[i].yPos + defaultCard[i].cardHeight) {
+      defaultCard[i].xPos = zones[i].playerZoneX;
       defaultCard[i].yPos = zones[i].playerZoneY;
       defaultCard[i].inZone = true;
     }

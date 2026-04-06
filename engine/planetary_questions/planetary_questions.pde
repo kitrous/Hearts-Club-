@@ -41,7 +41,7 @@ void setup() {
         defaultCard[i].isPlayer = true;
   }
   for (int i = 0; i < zones.length; i++){
-      zones[i] = new Zone(width/2, height/2);
+      zones[i] = new Zone( width/2, height/2);
       zones[i].zonesDisplay();
   }
 
@@ -116,17 +116,24 @@ void mouseReleased(){
   } 
   
   for (int i = 0; i < zones.length; i++) {
-    if (zones[i].playerZoneX + i * (zones[i].zoneWidth + zones[i].zoneSpacing) > defaultCard[i].xPos && zones[i].playerZoneX + i * (zones[i].zoneWidth + zones[i].zoneSpacing) < defaultCard[i].xPos + defaultCard[i].dCWidth && zones[i].playerZoneY > defaultCard[i].yPos && zones[i].playerZoneY < defaultCard[i].yPos + defaultCard[i].dCHeight) {
+    
+    if (zones[i].playerZoneX + i * (zones[i].zoneWidth + zones[i].zoneSpacing) + 25 > defaultCard[i].xPos -25
+    && zones[i].playerZoneX + i * (zones[i].zoneWidth + zones[i].zoneSpacing ) < defaultCard[i].xPos + defaultCard[i].dCWidth 
+    && zones[i].playerZoneY + 50 > defaultCard[i].yPos - 25
+    && zones[i].playerZoneY < defaultCard[i].yPos + defaultCard[i].dCHeight  ) 
+    {
       defaultCard[i].xPos = zones[i].playerZoneX + i * (zones[i].zoneWidth + zones[i].zoneSpacing);
       defaultCard[i].yPos = zones[i].playerZoneY;
       defaultCard[i].inZone = true;
     }
+  }
     //if (defaultCard[i].xPos > 0 && defaultCard[i].yPos > 0) {
     //  defaultCard[i].xPos = zones[i].playerZoneX + i * (zones[i].zoneWidth + zones[i].zoneSpacing);
     //  defaultCard[i].yPos = zones[i].playerZoneY;
     //  defaultCard[i].inZone = true;
     //}
   }
+
   
   //if (zones[0].playerZoneX > defaultCard[0].xPos && zones[0].playerZoneX < defaultCard[0].xPos + defaultCard[0].dCWidth && zones[0].playerZoneY > defaultCard[0].yPos && zones[0].playerZoneY < defaultCard[0].yPos + defaultCard[0].dCHeight) {
   //    defaultCard[0].xPos = zones[0].playerZoneX + 0 * (zones[0].zoneWidth + zones[0].zoneSpacing);
@@ -137,7 +144,7 @@ void mouseReleased(){
   //for (int i = 0; i < zones.length; i++){
   //    if (zones[i].enemyZoneX > )
   //}
-}
+
 void mouseDragged() {
   
 

@@ -28,7 +28,7 @@ class Zone {
     for (int i = 0; i < zoneSpots; i++) {
       stroke(0);
       fill(0);
-      rect(playerZoneX + i * (zoneWidth + zoneSpacing), playerZoneY, zoneWidth, zoneHeight);
+      rect(playerZoneX + i * (zoneWidth + zoneSpacing), playerZoneY, zoneWidth , zoneHeight);
     }
   }
   void enemyZoneDisplay() {

@@ -14,6 +14,8 @@ Player player;
 Enemy enemy;
 Timer gameTimer;
 
+//Collisions collisions;
+
 int defaultHP = 50;
 
 int enemyCardValue = 0;
@@ -49,6 +51,8 @@ void setup() {
   ui = new UI(new PVector (width/2 + 550, height/2));
   player = new Player();
   enemy = new Enemy();
+  
+  //collisions = new Collisions();
 }
 
 void draw() {
@@ -86,6 +90,8 @@ void draw() {
   
   //gameTimer.calcTime();
   
+//collisons.display();
+  
 }
 
 void mousePressed() {
@@ -110,6 +116,9 @@ void mouseClicked() {
 }
 
 void mouseReleased(){
+  
+  //collisions.mouseReleased();
+  
  for (int i = 0; i < defaultCard.length; i++){
 
     defaultCard[i].mouseReleased();
@@ -127,13 +136,12 @@ void mouseReleased(){
       defaultCard[i].inZone = true;
     }
   }
-    //if (defaultCard[i].xPos > 0 && defaultCard[i].yPos > 0) {
+ }
+//if (defaultCard[i].xPos > 0 && defaultCard[i].yPos > 0) {
     //  defaultCard[i].xPos = zones[i].playerZoneX + i * (zones[i].zoneWidth + zones[i].zoneSpacing);
     //  defaultCard[i].yPos = zones[i].playerZoneY;
     //  defaultCard[i].inZone = true;
     //}
-  }
-
   
   //if (zones[0].playerZoneX > defaultCard[0].xPos && zones[0].playerZoneX < defaultCard[0].xPos + defaultCard[0].dCWidth && zones[0].playerZoneY > defaultCard[0].yPos && zones[0].playerZoneY < defaultCard[0].yPos + defaultCard[0].dCHeight) {
   //    defaultCard[0].xPos = zones[0].playerZoneX + 0 * (zones[0].zoneWidth + zones[0].zoneSpacing);

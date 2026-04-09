@@ -1,5 +1,5 @@
 ArrayList<Effect> cardEffects;
-
+//to add didfferent effects to our cards
 void addEffects() {
   cardEffects = new ArrayList<Effect>();
   

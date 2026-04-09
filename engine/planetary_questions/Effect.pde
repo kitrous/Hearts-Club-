@@ -24,7 +24,7 @@ class Effect {
     //if ()
   }
   
-  
+  // i dont believe this is being used atm
   void cardStatus() {
     
     if (cardChance == 1) {

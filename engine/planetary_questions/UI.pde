@@ -10,7 +10,7 @@ class UI {
   {
     endTurnButton = pos;
   }
-
+  //runs all the methods inside for the UI
   void run() {
     display();
     collision();
@@ -59,6 +59,7 @@ class UI {
     //} else {
     //  mousClickedReleased = true;
     //}
+    // for the end turn button
     if (insideButton == true && defaultCard[0].inZone == true && defaultCard[1].inZone == true && defaultCard[2].inZone == true && defaultCard[3].inZone == true && defaultCard[4].inZone == true)
     {
       ts.endTurn();

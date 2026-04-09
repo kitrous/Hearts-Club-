@@ -27,7 +27,7 @@ class Deck {
     deckColorG = dColorG;
     deckColorB = dColorB;
   }
-
+  //if the deck is pressed based on the amount in the main file, you will get x amount of cards and each will have a different effect
   void mousePressed(){
     
     if (mouseX > deckXPos && mouseX < deckXPos + deckWidth && mouseY > deckYPos && mouseY < deckYPos + deckHeight) {
@@ -47,7 +47,7 @@ class Deck {
       //player.updatePlayerCard(dcard.cardValue);
     }
   }
-  
+  //draws enemy cards, typically happens after you press end turn when you have placed your cards down on the zone
   void enemyDraw() {
     for (int i = 0; i < enemyCard.length; i++){
         if (i == 0){

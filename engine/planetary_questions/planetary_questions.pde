@@ -1,3 +1,4 @@
+//Calling objects
 UI ui;
 TurnSystem ts;
 Card dcard;
@@ -33,9 +34,11 @@ void setup() {
   //dcard = new Card(100, 600);
   
   //pCard1 = new Card (width/2, height/2);
+  //Calls decks onto the main file
   enemyDeck = new Deck(width/2 + 500, height/2 - 300, 155, 55, 55);
   ddeck = new Deck(width/2 + 500, height/2 + 100, 123, 200, 123);
   
+  //Calls the cards but for an array
   for (int i = 0; i < enemyCard.length; i++) {
     Effect e = cardEffects.get(int(random(0, 3)));
     enemyCard[i] = new Card(width/2 + 2500, height/2 - 2300, 100, 150, color (123, 200, 123), 2, e);
@@ -51,7 +54,7 @@ void setup() {
     
     zones[i] = new Zone(width/2 - 750, height/2);
   }
-
+  
   ts = new TurnSystem();
   ui = new UI(new PVector (width/2 + 550, height/2));
   player = new Player();
@@ -65,23 +68,25 @@ void draw() {
   //dcard.display();
   //pCard1.display();
   //zones.zonesDisplay();
+  
+  //Draws the zones to the screen using the method in the Zone class
   for (int i = 0; i < zones.length; i++){
       zones[i].zonesDisplay();
   }
-  
+  //Displays enemy cards and sends cards to the tombstone when eliminated
   for (int i = 0; i < enemyCard.length; i++) {
         enemyCard[i].display();
         enemyCard[i].Hovering();
         enemyCard[i].GoToTombstone();
   }
-  
+  //Displays player cards and sends to the tombstone when eliminated
   for (int i = 0; i < defaultCard.length; i++){
     defaultCard[i].display();
     defaultCard[i].Hovering();
     defaultCard[i].GoToTombstone();
     //defaultCard[i].mousePressed();
   }
-
+  // Shows both decks, runs the ui methods and ends the turn for the player when done
   enemyDeck.showDeck();
   ddeck.showDeck();
   ui.run();
@@ -95,32 +100,33 @@ void draw() {
 }
 
 void mousePressed() {
-
+  //allows the deck to be pressed
   ddeck.mousePressed();
   //pCard1.mousePressed();
   
+  //allows the cards to be pressed and hovered on the mousex and mousey
   ui.mousePressed();
   for (int i = 0; i < defaultCard.length; i++){
     defaultCard[i].display();
     defaultCard[i].Hovering();
     defaultCard[i].mousePressed();
   }
-  
+  //im not sure what this does exactly - kobe (to be edited)
   for (int i = 0; i < enemyCard.length; i++) {
     enemyCard[i].mousePressed();
   }
 }
-
+//allows the end turn button to be clicked
 void mouseClicked() {
   ui.mouseClicked();
 }
-
+// turns the card you are holding to not be dragged anymore
 void mouseReleased(){
  for (int i = 0; i < defaultCard.length; i++){
 
     defaultCard[i].mouseReleased();
   } 
-  
+  //zone detection (doesn't work right now lol)
   for (int i = 0; i < zones.length; i++) {
     if (zones[i].playerZoneX > defaultCard[i].xPos && zones[i].playerZoneX < defaultCard[i].xPos + defaultCard[i].cardWidth && zones[i].playerZoneY > defaultCard[i].yPos && zones[i].playerZoneY < defaultCard[i].yPos + defaultCard[i].cardHeight) {
       defaultCard[i].xPos = zones[i].playerZoneX;

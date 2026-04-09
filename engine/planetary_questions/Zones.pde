@@ -23,7 +23,7 @@ class Zone {
   playerZoneDisplay();
   enemyZoneDisplay();
   }
-
+//displays zone for the player
   void playerZoneDisplay() {
     for (int i = 0; i < zoneSpots; i++) {
       if (i == 0) {
@@ -46,7 +46,7 @@ class Zone {
     //  fill(0);
     //  rect(enemyZoneX + i * (zoneWidth + zoneSpacing), enemyZoneY, zoneWidth, zoneHeight);
     //}
-    
+    //displays zone for the enemy
     for (int i = 0; i < zoneSpots; i++) {
       if (i == 0) {
         zoneSpacing = 0;

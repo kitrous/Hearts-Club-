@@ -9,7 +9,7 @@ class TurnSystem {
 
   TurnSystem() {
   }
-
+  
   void gameOverDisplay() {
     textSize(200);
     stroke(0);
@@ -27,6 +27,7 @@ class TurnSystem {
       playerTurn = true;
     }
   }
+  //if any player or enemy reaches zero it will tell you if you won or not
   void calcWinner() {
     //if (player.currentCardValue == enemy.currentCardValue) {
     //  turnsPlayed += 1;

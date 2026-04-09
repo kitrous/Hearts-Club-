@@ -1,5 +1,5 @@
 class Card {
-
+  //variables for our cards
   int cardValue = int(random(1, 10)); //random values
   Effect cardE;
   boolean isHovering;
@@ -45,7 +45,7 @@ class Card {
     cardHealth = _cardHealth;
     cardEffect = _cardEffect;
   }
-
+  // when dragging the card you selected it will use your mousex and mousey to update to that location
   void display() {
     if (this.isDraggingCard)
     {
@@ -81,8 +81,9 @@ class Card {
     //stroke(cardStroke);
     //text(cardEffect.effectName, xPos + cardWidth/2, yPos + cardHeight/2);
   }
+  
   void Hovering() {
-
+    //confirms if the mouse is hovering over card
     if (mouseX > this.xPos && mouseX < this.xPos + cardWidth && mouseY > this.yPos && mouseY < this.yPos + cardHeight) {
 
       if (!this.isDraggingCard && !this.isDestroyed) {
@@ -98,7 +99,7 @@ class Card {
     //  mouseDragged();
     //}
   }
-  
+  //sends the card to the tombstone and if the card is not a player card and not destroyed
   void GoToTombstone() {
     if (cardValue <= 0 && !isEnemy && !this.isDestroyed) {
       player.playerHP -= 5;
@@ -123,7 +124,7 @@ class Card {
   
   void mousePressed() {
     //println("hardy har har");
-
+    //checks if the card is hovering and if its in not in a zone already then it starts dragging
     if (this.isHovering && !inZone) {
       this.isDraggingCard = true;
       println("anything");
@@ -154,7 +155,7 @@ class Card {
       ts.playerIsAttacking = false;
       player.currentCardValue = 0;
     }
-    
+    //Attacks the player card
     if (this.isHovering && this.inZone && ts.playerIsAttacking && this.isEnemy) {
       println("Attack");
       
@@ -173,7 +174,7 @@ class Card {
       enemy.currentCardValue = this.cardValue;
       ts.calcWinner();
     }
-    
+    //Attacks enemy card
     if (ts.playerIsAttacking && this.isPlayer) {
       println("Player Attack");
       
@@ -193,7 +194,7 @@ class Card {
     }
     
     
-    
+    //if its in attacking mode, it can select a card to target and attack
     if (isAttacking) {
       canSelectTarget = true;
     }
@@ -202,7 +203,7 @@ class Card {
     //}
   }
   
-
+  //releases the card by making isdraggingcard false
   void mouseReleased() {
     if (this.isDraggingCard) {
       this.isDraggingCard = false;

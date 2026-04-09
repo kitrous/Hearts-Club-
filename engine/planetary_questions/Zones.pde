@@ -18,44 +18,53 @@ class Zone {
     enemyZoneX = x;
     enemyZoneY = y - 250;
   }
+  
+//Method to be used in void setup(). 
+//Call both createPlayerZones() and createEnemyZones() to consolidate referencing in the main file
+  void createZones() {
+    createPlayerZones();
+    createEnemyZones();
+  }
   void zonesDisplay() {
-  // displayed both zones in one method to reduce the number of referencing in the main file
-  playerZoneDisplay();
-  enemyZoneDisplay();
+    //displayed both zones in one method to reduce the number of referencing in the main file
+    playerZoneDisplay();
+    enemyZoneDisplay();
   }
 //displays zone for the player
   void playerZoneDisplay() {
-    for (int i = 0; i < zoneSpots; i++) {
-      if (i == 0) {
-        zoneSpacing = 0;
-      }
-      
-      zoneSpacing += 200;
-      stroke(0);
-      fill(0);
-      rect(playerZoneX + zoneSpacing, playerZoneY, zoneWidth, zoneHeight);
-    }
-    
-    //stroke(0);
-    //fill(0);
-    //rect(playerZoneX, playerZoneY, zoneWidth, zoneHeight);
+    stroke(0);
+    fill(0);
+    rect(playerZoneX, playerZoneY, zoneWidth, zoneHeight);
   }
-  void enemyZoneDisplay() {
-    //for (int i = 0; i < zoneSpots; i++) {
-    //  stroke(0);
-    //  fill(0);
-    //  rect(enemyZoneX + i * (zoneWidth + zoneSpacing), enemyZoneY, zoneWidth, zoneHeight);
-    //}
-    //displays zone for the enemy
+
+//Method to create player zones to be called in void createZones()
+  void createPlayerZones() {
     for (int i = 0; i < zoneSpots; i++) {
       if (i == 0) {
         zoneSpacing = 0;
       }
       
       zoneSpacing += 200;
-      stroke(0);
-      fill(0);
-      rect(enemyZoneX + zoneSpacing, enemyZoneY, zoneWidth, zoneHeight);
+      zones[i] = new Zone(playerZoneX + zoneSpacing, playerZoneY);
+    }
+  }
+  
+//displays zone for the enemy
+  void enemyZoneDisplay() {
+    stroke(0);
+    fill(0);
+    rect(enemyZoneX, enemyZoneY, zoneWidth, zoneHeight);
+  }
+  
+//Method to create enemy zones to be called in void createZones()  
+  void createEnemyZones() {
+    for (int i = 0; i < zoneSpots; i++) {
+      if (i == 0) {
+        zoneSpacing = 0;
+      }
+      
+      zoneSpacing += 200;
+      zones[i] = new Zone(enemyZoneX + zoneSpacing, enemyZoneY);
     }
   }
 }

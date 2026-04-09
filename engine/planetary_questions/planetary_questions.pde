@@ -51,7 +51,7 @@ void setup() {
     defaultCard[i].isPlayer = true;
   }
   for (int i = 0; i < zones.length; i++) {
-    zones[i] = new Zone(width/2 - 750, height/2 + 100);
+    zones[i] = new Zone(width/2 - 750, height/2 + 150, 100, 150, 200, 5);
     zones[i].createZones();
   }
   

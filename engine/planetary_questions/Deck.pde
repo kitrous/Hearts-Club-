@@ -27,7 +27,7 @@ class Deck {
     deckColorG = dColorG;
     deckColorB = dColorB;
   }
-
+  //if the deck is pressed based on the amount in the main file, you will get x amount of cards and each will have a different effect
   void mousePressed(){
     
     if (mouseX > deckXPos && mouseX < deckXPos + deckWidth && mouseY > deckYPos && mouseY < deckYPos + deckHeight) {
@@ -37,24 +37,26 @@ class Deck {
         if (i == 0){
           cardXOffset = 0;
         }
+        Effect e = cardEffects.get(int(random(0, cardEffects.size())));
         
         cardXOffset += 100;
-        defaultCard[i] = new Card(width/2 - 200 + cardXOffset, height/2 + 75);
+        defaultCard[i] = new Card(width/2 - 200 + cardXOffset, height/2 + 75, 100, 150, color (123, 200, 123), 2, e);
         //defaultCard[i].originalX
       }
 
       //player.updatePlayerCard(dcard.cardValue);
     }
   }
-  
+  //draws enemy cards, typically happens after you press end turn when you have placed your cards down on the zone
   void enemyDraw() {
     for (int i = 0; i < enemyCard.length; i++){
         if (i == 0){
           cardXOffset = 0;
         }
+        Effect e = cardEffects.get(int(random(0, cardEffects.size())));
         
         cardXOffset += 100;
-        enemyCard[i] = new Card(width/2 - 200 + cardXOffset, height/2 - 500);
+        enemyCard[i] = new Card(width/2 - 200 + cardXOffset, height/2 - 500, 100, 150, color (123, 200, 123), 2, e);
         enemyCard[i].isEnemy = true;
         //defaultCard[i].originalX
       }

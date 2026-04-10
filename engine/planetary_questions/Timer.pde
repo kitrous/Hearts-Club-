@@ -1,3 +1,4 @@
+//Timer, currently not being used
 class Timer {
   int currentTime = 0;
   int ellapsedMillis = 1000;

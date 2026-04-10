@@ -4,12 +4,13 @@ class UI {
   boolean insideButton;
   color c = color(0, 0, 0);
   int sw = 5;
+  String turnTextStatus;
   //constructor
   UI(PVector pos)
   {
     endTurnButton = pos;
   }
-
+  //runs all the methods inside for the UI
   void run() {
     display();
     collision();
@@ -58,7 +59,14 @@ class UI {
     //} else {
     //  mousClickedReleased = true;
     //}
-    if (insideButton == true && defaultCard[0].inZone == true && defaultCard[1].inZone == true && defaultCard[2].inZone == true && defaultCard[3].inZone == true && defaultCard[4].inZone == true)
+
+    // for the end turn button
+    if (insideButton == true 
+    /*&& defaultCard[0].inZone == true 
+    && defaultCard[1].inZone == true 
+    && defaultCard[2].inZone == true 
+    && defaultCard[3].inZone == true 
+    && defaultCard[4].inZone == true*/)
     {
       ts.endTurn();
       c = color(0, 0, 0);
@@ -69,7 +77,12 @@ class UI {
 
   void mousePressed()
   {
-    if (insideButton == true && defaultCard[0].inZone == true && defaultCard[1].inZone == true && defaultCard[2].inZone == true && defaultCard[3].inZone == true && defaultCard[4].inZone == true)
+    if (insideButton == true 
+    /*&& defaultCard[0].inZone == true 
+    //&& defaultCard[1].inZone == true 
+    //&& defaultCard[2].inZone == true 
+    //&& defaultCard[3].inZone == true 
+    && defaultCard[4].inZone == true*/)
     {
       c = color(255, 0, 0);
       sw = 15;

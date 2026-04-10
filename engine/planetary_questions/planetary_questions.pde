@@ -16,7 +16,7 @@ Player player;
 Enemy enemy;
 Timer gameTimer;
 
-//Collisions collisions;
+Collision collision;
 
 int defaultHP = 50;
 
@@ -30,6 +30,7 @@ void setup() {
   textAlign(CENTER);
   
   addEffects();
+  collision = new Collision();
   
   gameTimer = new Timer();
 
@@ -69,27 +70,17 @@ void setup() {
 void draw() {
   background(100);
   
-  //dcard.BattlefieldDisplay();
-  //dcard.display();
-  //pCard1.display();
-  //zones.zonesDisplay();
-  
   //Draws the zones to the screen using the method in the Zone class
   for (int i = 0; i < zones.length; i++){
       zones[i].zonesDisplay();
   }
   //Displays enemy cards and sends cards to the tombstone when eliminated
   for (int i = 0; i < enemyCard.length; i++) {
-        enemyCard[i].display();
-        enemyCard[i].Hovering();
-        enemyCard[i].GoToTombstone();
+        enemyCard[i].run();
   }
   //Displays player cards and sends to the tombstone when eliminated
   for (int i = 0; i < defaultCard.length; i++){
-    defaultCard[i].display();
-    defaultCard[i].Hovering();
-    defaultCard[i].GoToTombstone();
-    //defaultCard[i].mousePressed();
+    defaultCard[i].run();
   }
   // Shows both decks, runs the ui methods and ends the turn for the player when done
   enemyDeck.showDeck();
@@ -97,13 +88,7 @@ void draw() {
   ui.run();
   enemy.updateTurn();
   ts.gameOverDisplay();
-  //println(ui.sw);
-  //fill(0);
-  
-  //gameTimer.calcTime();
-  
-//collisons.display();
-  
+  ts.isGameOver();
 }
 
 void mousePressed() {
@@ -114,8 +99,8 @@ void mousePressed() {
   //allows the cards to be pressed and hovered on the mousex and mousey
   ui.mousePressed();
   for (int i = 0; i < defaultCard.length; i++){
-    defaultCard[i].display();
-    defaultCard[i].Hovering();
+    defaultCard[i].run();
+    //defaultCard[i].Hovering();
     defaultCard[i].mousePressed();
   }
   //im not sure what this does exactly - kobe (to be edited)
@@ -137,17 +122,17 @@ void mouseReleased(){
     defaultCard[i].mouseReleased();
   } 
   //zone detection (doesn't work right now lol)
-  for (int i = 0; i < zones.length; i++) {
-    if (zones[i].playerZoneX + i * (zones[i].zoneWidth + zones[i].zoneSpacing) + 25 > defaultCard[i].xPos -25
-    && zones[i].playerZoneX + i * (zones[i].zoneWidth + zones[i].zoneSpacing ) < defaultCard[i].xPos + defaultCard[i].dCWidth 
-    && zones[i].playerZoneY + 50 > defaultCard[i].yPos - 25
-    && zones[i].playerZoneY < defaultCard[i].yPos + defaultCard[i].dCHeight  ) 
-    {
-      defaultCard[i].xPos = zones[i].playerZoneX + i * (zones[i].zoneWidth + zones[i].zoneSpacing);
-      defaultCard[i].yPos = zones[i].playerZoneY;
-      defaultCard[i].inZone = true;
-    }
-  }
+  //for (int i = 0; i < zones.length; i++) {
+  //  if (zones[i].playerZoneX + i * (zones[i].zoneWidth + zones[i].zoneSpacing) + 25 > defaultCard[i].xPos -25
+  //  && zones[i].playerZoneX + i * (zones[i].zoneWidth + zones[i].zoneSpacing ) < defaultCard[i].xPos + defaultCard[i].cardWidth 
+  //  && zones[i].playerZoneY + 50 > defaultCard[i].yPos - 25
+  //  && zones[i].playerZoneY < defaultCard[i].yPos + defaultCard[i].cardHeight  ) 
+  //  {
+  //    defaultCard[i].xPos = zones[i].playerZoneX + i * (zones[i].zoneWidth + zones[i].zoneSpacing);
+  //    defaultCard[i].yPos = zones[i].playerZoneY;
+  //    defaultCard[i].inZone = true;
+  //  }
+  //}
 }
 //if (defaultCard[i].xPos > 0 && defaultCard[i].yPos > 0) {
     //  defaultCard[i].xPos = zones[i].playerZoneX + i * (zones[i].zoneWidth + zones[i].zoneSpacing);

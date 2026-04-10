@@ -1,16 +1,13 @@
 class Zone {
   //player zone variables
-  int playerZoneX;
-  int playerZoneY;
+  int playerZoneX, playerZoneY;
   //enemy zone variables
-  int enemyZoneX;
-  int enemyZoneY;
+  int enemyZoneX, enemyZoneY;
   //shared zone variables
-  int zoneWidth;
-  int zoneHeight;
-  int zoneSpacing;
-  int originalZSpacing = zoneSpacing;
+  int zoneWidth, zoneHeight;
+  int zoneSpacing, originalZSpacing = zoneSpacing;
   int zoneSpots;
+  boolean occupied;
   
   Zone(int x, int y, int zW, int zH, int zSpacing, int zSpots){
     playerZoneX = x;

@@ -27,17 +27,9 @@ class TurnSystem {
       playerTurn = true;
     }
   }
+  
   //if any player or enemy reaches zero it will tell you if you won or not
-  void calcWinner() {
-    //if (player.currentCardValue == enemy.currentCardValue) {
-    //  turnsPlayed += 1;
-    //  ts.endTurn();
-    //  return;
-    //} else if (player.currentCardValue < enemy.currentCardValue) {
-    //  player.playerHP -= enemy.currentCardValue;
-    //} else {
-    //  enemy.enemyHP -= player.currentCardValue;
-    //}
+  void isGameOver() {
     if (player.playerHP <= 0) {
       //game over
       gameOverColor = color (155, 55, 55);
@@ -48,6 +40,19 @@ class TurnSystem {
       gameOverColor = color (13, 12, 200);
       gameOverText = "You Win";
     }
+  }
+  //Calculates which card wins when they are attacking each other
+  void calcWinner() {
+    //if (player.currentCardValue == enemy.currentCardValue) {
+    //  turnsPlayed += 1;
+    //  ts.endTurn();
+    //  return;
+    //} else if (player.currentCardValue < enemy.currentCardValue) {
+    //  player.playerHP -= enemy.currentCardValue;
+    //} else {
+    //  enemy.enemyHP -= player.currentCardValue;
+    //}
+    
     
     player.currentCardValue -= enemy.currentCardValue;
     enemy.currentCardValue -= player.currentCardValue;

@@ -45,6 +45,22 @@ class Card {
     cardHealth = _cardHealth;
     cardEffect = _cardEffect;
   }
+  
+  void run() {
+    mCollision();
+    cCollision();
+    display();
+    goToTombstone();
+    
+    //if (isPlayer) {
+    //  this.cardValue = player.currentCardValue;
+    //}
+    
+    //if (isEnemy) {
+    //  this.cardValue = enemy.currentCardValue;
+    //}
+  }
+  
   // when dragging the card you selected it will use your mousex and mousey to update to that location
   void display() {
     if (this.isDraggingCard)
@@ -70,37 +86,27 @@ class Card {
     text(cardValue, xPos+25, yPos+30);
     textSize(15);
     text(cardEffect.effectName, xPos + cardWidth/2, yPos + cardHeight/2);
-    
-    
-    //fill(cardColor);
-    //rect(xPos, yPos, cardWidth, cardHeight, 15);
-    
-    //fill(255);
-    //textSize(cardNumSize);
-    //strokeWeight(5);
-    //stroke(cardStroke);
-    //text(cardEffect.effectName, xPos + cardWidth/2, yPos + cardHeight/2);
   }
   
-  void Hovering() {
-    //confirms if the mouse is hovering over card
-    if (mouseX > this.xPos && mouseX < this.xPos + cardWidth && mouseY > this.yPos && mouseY < this.yPos + cardHeight) {
+  //void Hovering() {
+  //  //confirms if the mouse is hovering over card
+  //  if (mouseX > this.xPos && mouseX < this.xPos + cardWidth && mouseY > this.yPos && mouseY < this.yPos + cardHeight) {
 
-      if (!this.isDraggingCard && !this.isDestroyed) {
-        this.isHovering = true;
-      }
+  //    if (!this.isDraggingCard && !this.isDestroyed) {
+  //      this.isHovering = true;
+  //    }
 
-      //println("hover");
-    } else {
-      this.isHovering = false;
-    }
+  //    //println("hover");
+  //  } else {
+  //    this.isHovering = false;
+  //  }
 
-    //if (isDraggingCard){
-    //  mouseDragged();
-    //}
-  }
+  //  //if (isDraggingCard){
+  //  //  mouseDragged();
+  //  //}
+  //}
   //sends the card to the tombstone and if the card is not a player card and not destroyed
-  void GoToTombstone() {
+  void goToTombstone() {
     if (cardValue <= 0 && !isEnemy && !this.isDestroyed) {
       player.playerHP -= 5;
       this.isDestroyed = true;
@@ -108,6 +114,7 @@ class Card {
     else if (cardValue <= 0 && isEnemy && !this.isDestroyed) {
       enemy.enemyHP -= 5;
       this.isDestroyed = true;
+      
     }
     
     if (this.isDestroyed) {
@@ -160,7 +167,8 @@ class Card {
       println("Attack");
       
       println("Enemy " + this.cardValue);
-       
+      
+      //this.attackingValue = enemy.currentCardValue;
       this.cardValue -= player.currentCardValue;
       player.currentCardValue -= this.cardValue;
        
@@ -180,11 +188,11 @@ class Card {
       
       println("Player " + this.cardValue);
        
-      this.cardValue -= enemy.currentCardValue;
+      this.cardValue = player.currentCardValue;
        
-      //for (int i = 0; i < enemyCard.length; i++) {
-      //  enemyCard[i].cardValue -= player.currentCardValue;
-      //}
+      for (int i = 0; i < enemyCard.length; i++) {
+        enemyCard[i].cardValue -= player.currentCardValue;
+      }
       
       for (int i = 0; i < defaultCard.length; i++) {
         defaultCard[i].cardValue -= enemy.currentCardValue;
@@ -211,6 +219,117 @@ class Card {
     
     if (ts.playerTurn && isAttacking) {
       
+    }
+  }
+  
+  void mCollision() {
+    boolean mPlayerCol = collision.mouseCollision(mouseX, mouseY, this.xPos, this.yPos, this.cardWidth, this.cardHeight);
+    
+    if (mPlayerCol == true && !isDraggingCard /*&& !holdingACard*/) {
+      this.isHovering = true;
+      
+      if ((xPos == startX && yPos == startY) || inZone) {
+        
+        if (cardEffect.effectDescription == "") {
+          //Don't do anything
+        }
+        else {
+          fill(cardColor);
+          rect(xPos - cardWidth/2 * 4, yPos - cardHeight/2 * 2, 300, 200, 15);
+          fill(255);
+          textSize(20);
+          text(cardEffect.effectDescription, xPos - cardWidth/2, yPos - cardHeight/2, 40);
+        }
+      }
+    }
+    else {
+      this.isHovering = false;
+    }
+    
+  //  if (this.isHovering && isClicking && !inZone) {
+  //    isDragging = true;
+  //    holdingACard = true;
+  //  }
+  //  else if (!isClicking) {
+  //    this.isDragging = false;
+  //    holdingACard = false;
+  //  }
+    
+  //  if (this.isDragging) {
+  //    this.xPos = mouseX - cardWidth/2;
+  //    this.yPos = mouseY - cardHeight/2;
+  //  }
+  //  else if (!this.inZone && !this.onZone) {
+  //    xPos = startX;
+  //    yPos = startY;
+      
+  //    //if(xPos >= startX) {
+  //    //  xPos -= speed;
+  //    //}   
+  //    //if(xPos <= startX) {
+  //    //  xPos += speed;
+  //    //}
+  //    //if(yPos >= startY) {
+  //    //  yPos -= speed;
+  //    //}
+  //    //if(yPos <= startY) {
+  //    //  yPos += speed;
+  //    //}
+  //    //if (xPos != startX && yPos != startY) {
+  //    //  xPos = startX;
+  //    //  yPos = startY;
+  //    //}
+  //  }
+  }
+  
+  //Collision between cards
+  void cCollision() {
+    
+    //Card Collision for other Cards like enemy card (WIP)
+    //for (int i = 0; i < enemyCards.length; i++) {
+    //  boolean enemyCol = collision.rectCol(xPos, yPos, enemyCards[i].xPos, enemyCards[i].yPos, cardWidth, cardHeight, enemyCards[i].cardWidth, enemyCards[i].cardHeight);
+      
+    //  if (enemyCol) {
+        
+    //  }
+    //}
+    
+    //Card Collision for zones
+    for (int i = 0; i < zones.length; i++) {
+      boolean pZoneCol = collision.rectCollision(this.xPos, this.yPos, zones[i].playerZoneX, zones[i].playerZoneY, cardWidth, cardHeight, zones[i].zoneWidth + 10, zones[i].zoneHeight + 10);
+      
+      if (pZoneCol) {
+        if (!this.isDraggingCard && !this.inZone && zones[i].occupied == false) {
+          this.xPos = zones[i].playerZoneX;
+          this.yPos = zones[i].playerZoneY;
+          this.inZone = true;
+          zones[i].occupied = true;
+        }
+        else if (this.xPos != zones[i].playerZoneX && this.yPos != zones[i].playerZoneY) {
+          zones[i].occupied = false;
+        }
+      }
+      
+      //if (pZoneCol) {
+      //  println("In zone.");
+      //  this.onZone = true;
+        
+      //  //if (isClicking && !this.inZone) {
+      //  //  this.inZone = false;
+      //  //}
+        
+      //  if (!isClicking && this.onZone && zones[i].isOccupied == false) {
+      //    this.xPos = zones[i].playerZoneX;
+      //    this.yPos = zones[i].playerZoneY;
+      //    this.inZone = true;
+      //    zones[i].isOccupied = true;
+      //  }
+      //  //else {
+      //  //  println("Not in zone.");
+      //  //  this.onZone = false;
+      //  //  this.inZone = false;
+      //  //}
+      //}
     }
   }
 }

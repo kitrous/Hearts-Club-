@@ -30,7 +30,8 @@ class Enemy {
       
       for (int i = 0; i < zones.length; i++) {
         
-        enemyCard[i].xPos = zones[i].enemyZoneX + i * (zones[i].zoneWidth + zones[i].zoneSpacing);
+        //enemyCard[i].xPos = zones[i].enemyZoneX + i * (zones[i].zoneWidth + zones[i].zoneSpacing);
+        enemyCard[i].xPos = zones[i].enemyZoneX;
         enemyCard[i].yPos = zones[i].enemyZoneY;
         enemyCard[i].inZone = true;
       }

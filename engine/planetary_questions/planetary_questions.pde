@@ -16,6 +16,8 @@ Player player;
 Enemy enemy;
 Timer gameTimer;
 
+//Collisions collisions;
+
 int defaultHP = 50;
 
 int enemyCardValue = 0;
@@ -50,6 +52,7 @@ void setup() {
     defaultCard[i] = new Card(width/2 + 1000, height/2 + 400, 100, 150, color (123, 200, 123), 2, e);
     defaultCard[i].isPlayer = true;
   }
+  
   for (int i = 0; i < zones.length; i++) {
     zones[i] = new Zone(width/2 - 750, height/2 + 150, 100, 150, 200, 5);
     zones[i].createZones();
@@ -59,6 +62,8 @@ void setup() {
   ui = new UI(new PVector (width/2 + 550, height/2));
   player = new Player();
   enemy = new Enemy();
+  
+  //collisions = new Collisions();
 }
 
 void draw() {
@@ -97,6 +102,8 @@ void draw() {
   
   //gameTimer.calcTime();
   
+//collisons.display();
+  
 }
 
 void mousePressed() {
@@ -122,23 +129,31 @@ void mouseClicked() {
 }
 // turns the card you are holding to not be dragged anymore
 void mouseReleased(){
+  
+  //collisions.mouseReleased();
+  
  for (int i = 0; i < defaultCard.length; i++){
 
     defaultCard[i].mouseReleased();
   } 
   //zone detection (doesn't work right now lol)
   for (int i = 0; i < zones.length; i++) {
-    if (zones[i].playerZoneX > defaultCard[i].xPos && zones[i].playerZoneX < defaultCard[i].xPos + defaultCard[i].cardWidth && zones[i].playerZoneY > defaultCard[i].yPos && zones[i].playerZoneY < defaultCard[i].yPos + defaultCard[i].cardHeight) {
-      defaultCard[i].xPos = zones[i].playerZoneX;
+    if (zones[i].playerZoneX + i * (zones[i].zoneWidth + zones[i].zoneSpacing) + 25 > defaultCard[i].xPos -25
+    && zones[i].playerZoneX + i * (zones[i].zoneWidth + zones[i].zoneSpacing ) < defaultCard[i].xPos + defaultCard[i].dCWidth 
+    && zones[i].playerZoneY + 50 > defaultCard[i].yPos - 25
+    && zones[i].playerZoneY < defaultCard[i].yPos + defaultCard[i].dCHeight  ) 
+    {
+      defaultCard[i].xPos = zones[i].playerZoneX + i * (zones[i].zoneWidth + zones[i].zoneSpacing);
       defaultCard[i].yPos = zones[i].playerZoneY;
       defaultCard[i].inZone = true;
     }
-    //if (defaultCard[i].xPos > 0 && defaultCard[i].yPos > 0) {
+  }
+}
+//if (defaultCard[i].xPos > 0 && defaultCard[i].yPos > 0) {
     //  defaultCard[i].xPos = zones[i].playerZoneX + i * (zones[i].zoneWidth + zones[i].zoneSpacing);
     //  defaultCard[i].yPos = zones[i].playerZoneY;
     //  defaultCard[i].inZone = true;
     //}
-  }
   
   //if (zones[0].playerZoneX > defaultCard[0].xPos && zones[0].playerZoneX < defaultCard[0].xPos + defaultCard[0].dCWidth && zones[0].playerZoneY > defaultCard[0].yPos && zones[0].playerZoneY < defaultCard[0].yPos + defaultCard[0].dCHeight) {
   //    defaultCard[0].xPos = zones[0].playerZoneX + 0 * (zones[0].zoneWidth + zones[0].zoneSpacing);
@@ -149,7 +164,7 @@ void mouseReleased(){
   //for (int i = 0; i < zones.length; i++){
   //    if (zones[i].enemyZoneX > )
   //}
-}
+
 void mouseDragged() {
   
 

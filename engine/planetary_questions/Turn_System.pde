@@ -6,6 +6,8 @@ class TurnSystem {
   boolean playerIsAttacking;
   String gameOverText = "";
   color gameOverColor = color (0, 0, 0);
+  Card currentPlayerAttackingCard;
+  Card currentEnemyTarget;
 
   TurnSystem() {
   }
@@ -26,6 +28,7 @@ class TurnSystem {
     } else {
       playerTurn = true;
     }
+    calcWinner();
   }
   
   //if any player or enemy reaches zero it will tell you if you won or not
@@ -43,31 +46,24 @@ class TurnSystem {
   }
   //Calculates which card wins when they are attacking each other
   void calcWinner() {
-    //if (player.currentCardValue == enemy.currentCardValue) {
-    //  turnsPlayed += 1;
-    //  ts.endTurn();
-    //  return;
-    //} else if (player.currentCardValue < enemy.currentCardValue) {
-    //  player.playerHP -= enemy.currentCardValue;
-    //} else {
-    //  enemy.enemyHP -= player.currentCardValue;
-    //}
-    
-    
-    player.currentCardValue -= enemy.currentCardValue;
-    enemy.currentCardValue -= player.currentCardValue;
+    if (playerIsAttacking && !playerTurn) {
+      println("Lol");
+      currentPlayerAttackingCard.cardValue -= currentEnemyTarget.damage;
+      currentEnemyTarget.cardValue -= currentPlayerAttackingCard.damage;
+      playerIsAttacking = false;
+    }
     
     for (int i = 0; i < enemyCard.length; i++) {
       enemy.currentCardValue = 0;
     }
       
-    for (int i = 0; i < defaultCard.length; i++) {
-      defaultCard[i].cardStroke = color (0, 0, 0);
+    for (int i = 0; i < defaultCard.size(); i++) {
+      Card dCard = defaultCard.get(i);
+      dCard.cardStroke = color (0, 0, 0);
       
-      defaultCard[i].isAttacking = false;
-      defaultCard[i].selectedCard = false;
+      dCard.isAttacking = false;
+      dCard.selectedCard = false;
       playerIsAttacking = false;
-      player.currentCardValue = 0;
     }
     
     turnsPlayed += 1;

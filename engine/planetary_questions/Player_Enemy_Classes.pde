@@ -26,7 +26,7 @@ class Enemy {
   void updateTurn() {
     if (!ts.playerTurn) {
       //Enemy Draws card
-      enemyDeck.enemyDraw();
+      //enemyDeck.enemyDraw();
       
       for (int i = 0; i < zones.length; i++) {
         

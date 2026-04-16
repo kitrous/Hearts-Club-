@@ -33,14 +33,17 @@ class Deck {
     if (mouseX > deckXPos && mouseX < deckXPos + deckWidth && mouseY > deckYPos && mouseY < deckYPos + deckHeight) {
       
       //Deal Card, creating a new instance of a card object to be placed on the player's side of "play area"
-      for (int i = 0; i < defaultCard.length; i++){
+      for (int i = 0; i < 5/*defaultCard.size()*/; i++){
         if (i == 0){
           cardXOffset = 0;
         }
+        println("Trying...");
         Effect e = cardEffects.get(int(random(0, cardEffects.size())));
+        //Card deCard = defaultCard.get(i);
         
         cardXOffset += 100;
-        defaultCard[i] = new Card(width/2 - 200 + cardXOffset, height/2 + 75, 100, 150, color (123, 200, 123), 2, e);
+        defaultCard.add(new Card(width/2 - 200 + cardXOffset, height/2 + 75, 100, 150, color (123, 200, 123), 2, e));
+        //defaultCard[i] = new Card(width/2 - 200 + cardXOffset, height/2 + 75, 100, 150, color (123, 200, 123), 2, e);
         //defaultCard[i].originalX
       }
 
@@ -69,6 +72,7 @@ class Deck {
     fill(deckColorR, deckColorG, deckColorB);
     rect(deckXPos, deckYPos, deckWidth, deckHeight);
     fill(0);
+    textSize(20);
     text("Deck", deckXPos + 50, deckYPos+25);
   }
 }

@@ -1,17 +1,12 @@
 class Card {
   //variables for our cards
-  int cardValue = int(random(1, 10)); //random values
-  Effect cardE;
-  boolean isHovering;
-  boolean isDraggingCard;
+  int cardValue = int(random(1, 10)), damage = cardValue; //random values
+  boolean isHovering, isDraggingCard;
   boolean isDestroyed;
   boolean selectedCard;
   boolean isAttacking; //boolean to track whether a card is attacking
   boolean inZone; //boolean to track if a card is in a zone
-  boolean canSelectTarget; //boolean to track if a card that "isAttacking" can select a card to attack
-  Card opponentCard; //A card object that would be the opponent card that this card is attacking.
-  boolean isEnemy;
-  boolean isPlayer;
+  boolean isEnemy, isPlayer;
   /* so we dont just have a bunch of random numbers and the card look stay's consistent
    edit these values to change how the card looks/position etc */
   int cardNumSize = 25;
@@ -51,14 +46,6 @@ class Card {
     cCollision();
     display();
     goToTombstone();
-    
-    //if (isPlayer) {
-    //  this.cardValue = player.currentCardValue;
-    //}
-    
-    //if (isEnemy) {
-    //  this.cardValue = enemy.currentCardValue;
-    //}
   }
   
   // when dragging the card you selected it will use your mousex and mousey to update to that location
@@ -88,23 +75,6 @@ class Card {
     text(cardEffect.effectName, xPos + cardWidth/2, yPos + cardHeight/2);
   }
   
-  //void Hovering() {
-  //  //confirms if the mouse is hovering over card
-  //  if (mouseX > this.xPos && mouseX < this.xPos + cardWidth && mouseY > this.yPos && mouseY < this.yPos + cardHeight) {
-
-  //    if (!this.isDraggingCard && !this.isDestroyed) {
-  //      this.isHovering = true;
-  //    }
-
-  //    //println("hover");
-  //  } else {
-  //    this.isHovering = false;
-  //  }
-
-  //  //if (isDraggingCard){
-  //  //  mouseDragged();
-  //  //}
-  //}
   //sends the card to the tombstone and if the card is not a player card and not destroyed
   void goToTombstone() {
     if (cardValue <= 0 && !isEnemy && !this.isDestroyed) {
@@ -123,12 +93,6 @@ class Card {
     }
   }
   
-  //void keyPressed(){
-  //  this.isDestroyed = true;
-    
-  //  GoToTombstone();
-  //}
-  
   void mousePressed() {
     //println("hardy har har");
     //checks if the card is hovering and if its in not in a zone already then it starts dragging
@@ -137,88 +101,50 @@ class Card {
       println("anything");
     }
     
-    //Select a card for attacking
-    if (this.isHovering && inZone && !isAttacking && !this.selectedCard && !ts.playerIsAttacking && !isEnemy) {
-      println("Card " + this.cardValue + " is Attacking");
-      println("Card " + this.cardValue + " is Selected");
+    //If selecting a player card when trying to attack
+    if (this.isHovering && inZone && !ts.playerIsAttacking && ts.playerTurn && !isEnemy) {
       
       cardStroke = color (255, 0, 0);
       
-      this.isAttacking = true;
+      //this.isAttacking = true;
       this.selectedCard = true;
       ts.playerIsAttacking = true;
+      for (Card currentCard : defaultCard) {
+        if (currentCard.selectedCard) {
+          ts.currentPlayerAttackingCard = currentCard;
+        }
+      }
+      //ts.currentPlayerAttackingCard = get();
       player.currentCardValue = this.cardValue;
       this.cardValue = player.currentCardValue;
     }
     //Deselect a card to stop attacking
-    else if (this.isHovering && inZone && isAttacking && this.selectedCard && ts.playerIsAttacking && !this.isEnemy) {
-      println("Card " + this.cardValue + " is not Attacking");
-      println("Card " + this.cardValue + " is Deselected");
-      
+    else if (this.isHovering && inZone && ts.playerIsAttacking && ts.playerTurn && !isEnemy) {
+    
       cardStroke = color (0, 0, 0);
       
-      this.isAttacking = false;
+      //this.isAttacking = false;
       this.selectedCard = false;
       ts.playerIsAttacking = false;
       player.currentCardValue = 0;
     }
-    //Attacks the player card
-    if (this.isHovering && this.inZone && ts.playerIsAttacking && this.isEnemy) {
-      println("Attack");
-      
-      println("Enemy " + this.cardValue);
-      
-      //this.attackingValue = enemy.currentCardValue;
-      this.cardValue -= player.currentCardValue;
-      player.currentCardValue -= this.cardValue;
-       
-      //for (int i = 0; i < enemyCard.length; i++) {
-      //  enemyCard[i].cardValue -= player.currentCardValue;
-      //}
-      
-      for (int i = 0; i < defaultCard.length; i++) {
-        defaultCard[i].cardValue -= enemy.currentCardValue;
-      }
-      enemy.currentCardValue = this.cardValue;
-      ts.calcWinner();
-    }
-    //Attacks enemy card
-    if (ts.playerIsAttacking && this.isPlayer) {
-      println("Player Attack");
-      
-      println("Player " + this.cardValue);
-       
-      this.cardValue = player.currentCardValue;
-       
-      for (int i = 0; i < enemyCard.length; i++) {
-        enemyCard[i].cardValue -= player.currentCardValue;
-      }
-      
-      for (int i = 0; i < defaultCard.length; i++) {
-        defaultCard[i].cardValue -= enemy.currentCardValue;
-      }
-      enemy.currentCardValue = this.cardValue;
-      ts.calcWinner();
-    }
     
-    
-    //if its in attacking mode, it can select a card to target and attack
-    if (isAttacking) {
-      canSelectTarget = true;
+    //If selecting a enemy card that you are trying to target
+    if (this.isHovering && inZone && ts.playerIsAttacking && ts.playerTurn && this.isEnemy) {
+      this.selectedCard = true;
+      
+      for (Card targetCard : enemyCard) {
+        if (targetCard.selectedCard) {
+          ts.currentEnemyTarget = targetCard;
+        }
+      }
     }
-    //    if (isDraggingCard){
-    //  mouseDragged();
-    //}
   }
   
   //releases the card by making isdraggingcard false
   void mouseReleased() {
     if (this.isDraggingCard) {
       this.isDraggingCard = false;
-    }
-    
-    if (ts.playerTurn && isAttacking) {
-      
     }
   }
   
@@ -231,7 +157,7 @@ class Card {
       if ((xPos == startX && yPos == startY) || inZone) {
         
         if (cardEffect.effectDescription == "") {
-          //Don't do anything
+          return;
         }
         else {
           fill(cardColor);
@@ -311,7 +237,7 @@ class Card {
           this.inZone = true;
           zones[i].occupied = true;
         }
-        else if (this.xPos != zones[i].playerZoneX && this.yPos != zones[i].playerZoneY) {
+        else if (zones[i].playerZoneX != this.xPos && zones[i].playerZoneY != this.yPos && zones[i].occupied) {
           zones[i].occupied = false;
         }
       }

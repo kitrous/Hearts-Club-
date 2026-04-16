@@ -37,9 +37,6 @@ class UI {
     text("Enemy HP:"+enemy.enemyHP, width*.06, height*.1);
     
     fill(0);
-
-   
-    //text(enemyCardValue+ts, width*.46,height*.225);
   }
 
   void collision() {
@@ -53,39 +50,22 @@ class UI {
   }
 
   void mouseClicked() {
-    //collision();
-    //if (mouseClickedReleased == true){
-    //  collision = false;
-    //} else {
-    //  mousClickedReleased = true;
-    //}
-
     // for the end turn button
-    if (insideButton == true 
-    /*&& defaultCard[0].inZone == true 
-    && defaultCard[1].inZone == true 
-    && defaultCard[2].inZone == true 
-    && defaultCard[3].inZone == true 
-    && defaultCard[4].inZone == true*/)
+    if (insideButton == true)
     {
       ts.endTurn();
       c = color(0, 0, 0);
-      //println("bob");just a test to see if it will come out repeated or a single time
       sw = 5;
     }
   }
 
   void mousePressed()
   {
-    if (insideButton == true 
-    /*&& defaultCard[0].inZone == true 
-    //&& defaultCard[1].inZone == true 
-    //&& defaultCard[2].inZone == true 
-    //&& defaultCard[3].inZone == true 
-    && defaultCard[4].inZone == true*/)
+    if (insideButton == true)
     {
       c = color(255, 0, 0);
       sw = 15;
+      ts.endTurn();
     }
   }
 }

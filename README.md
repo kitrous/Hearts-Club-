@@ -14,7 +14,7 @@
 
 - “*defaultHP*” is the regular health points for both the player and the enemy.
 
-# 
+
 
 # Contents
 
@@ -29,6 +29,7 @@
 [**UI Class**](#ui-class)
 
 [**Zone Class**](#zone-class)
+
 
 # Card Class
 
@@ -70,6 +71,15 @@
 
 - *isEnemy* and *isPlayer* are booleans that track if the card is an enemy or a player.
 
+
+## Constructor
+
+
+### Card(float _xPos, float _yPos, float _cardWidth, float _cardHeight, color _cardColor, int _cardHealth, Effect _cardEffect)
+
+- These are the parameters for the card constructor, (ignore card effect those do not work)
+
+
 # Deck Class
 
 ## Methods
@@ -93,6 +103,7 @@
 ### Deck(int mx, int my, int dColorR, int dColorG, int dColorB)
 
 - Parameters take a x position, y position, and RGB colors.
+
 
 
 # Player / Enemy Class
@@ -129,6 +140,7 @@
 
 - *gameOverColor* holds a color value for the text that shows when you win or lose.
 
+
 # UI Class
 
 ## Methods
@@ -152,6 +164,7 @@
 - The boolean *insideButton* is used to check if the mouse is inside the button.
 
 - *c* is just for color values.
+
 
 # Zone Class
 

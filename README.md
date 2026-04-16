@@ -1,6 +1,6 @@
 #  The Heart Engine
 
-*: an engine made by **processing** for card-games like Hearthstone*
+*: an engine made by [**processing**](https://processing.org/) for card-games like Hearthstone*
 
 ## Main Features
 

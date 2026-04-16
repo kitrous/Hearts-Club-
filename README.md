@@ -8,7 +8,7 @@
 
 - Ability to customize the appearance of said cards
 
-- Turn system, Decks, Players, Enemy, UI and Zone classes
+- Turn system, Decks, Collisions, Effects, Players, Enemy, UI and Zone classes
 
 ## Global Fields
 
@@ -19,6 +19,8 @@
 # Contents
 
 [**Card Class**](#card-class)
+
+[**Collision Class**](#collision-class)
 
 [**Deck Class**](#deck-class)
 
@@ -45,6 +47,8 @@
 
 - *mouseReleased()* lets go of the card whenever you release the mouse.
 
+- *mCollision* uses the [**Collision Class**](#collision-class) to detect collisions on the card with the mouse or any other methods you use, can be used with this method.
+
 ## Fields
 
 - *cardValue* is a variable that holds the value of the cards, as per the name. This value randomly changes every time it is called with “new Card()”.
@@ -53,7 +57,7 @@
 
 - *dCWidth, dCHeight* change the card’s width and height respectively. 
 
-- *cardNumSize *changes the size of the number on the card, which is tracking the *cardValue*.
+- *cardNumSize* changes the size of the number on the card, which is tracking the *cardValue*.
 
 - *isHovering* is a boolean that is used for checking if a mouse is over a card.
 
@@ -79,6 +83,15 @@
 
 - These are the parameters for the card constructor, (ignore card effect those do not work)
 
+# Collision Class
+
+## Methods
+
+- mouseCollision(float mX, float mY, float objX, float objY, float objW, float objH), takes in these parameters to determine if whether your mouse x and y is colliding with whatever object you are hovering over. If its true, the boolean will return true. If it is false, the boolean will return false.
+
+- rectCollision(float obj1X, float obj1Y, float obj2X, float obj2Y, float obj1W, float obj1H, float obj2W, float obj2H) does about the same thing mouseCollision does except for rectangles. Works well with zones.
+
+- circleCollision(PVector player, PVector obj, float playerR, float objR), same thing, will check the distance of the player x and y to the obj x and y to see if it is less than the player radius plus object radius for circle collisions.
 
 # Deck Class
 
@@ -104,7 +117,15 @@
 
 - Parameters take a x position, y position, and RGB colors.
 
+# Effect Class and Effect Creator Array List
 
+## Fields
+
+- *effectName* is the name of the effect you want to use
+
+- *effectDescription* is the description you want to give the card in its summary when hovering over the card.
+
+- *effectValue* is (to be edited)
 
 # Player / Enemy Class
 

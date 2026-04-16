@@ -8,9 +8,9 @@
 
 - Ability to customize the appearance of said cards
 
-- Turn system, Decks, Players, Enemy and UI classes
+- Turn system, Decks, Players, Enemy, UI and Zone classes
 
-## Global Variables
+## Global Fields
 
 - “*defaultHP*” is the regular health points for both the player and the enemy.
 
@@ -18,23 +18,33 @@
 
 # Contents
 
-**Card Class**
+[**Card Class**](#card-class)
 
-**Deck Class**
+[**Deck Class**](#deck-class)
 
-**Player/ Enemy Class**
+[**Player/Enemy Class**](#player--enemy-class)
 
-**Turn System Class**
+[**Turn System Class**](#turn-system-class)
 
-**UI Class**
+[**UI Class**](#ui-class)
+
+[**Zone Class**](#zone-class)
 
 # Card Class
 
 ## Methods
 
-- *display() *is the method that displays the card's graphical appearance. 
+- *display()* is the method that displays the card's graphical appearance.
 
-## Variables
+- *Hovering()* is the method that checks if whether the mouse is hovering over the card.
+
+- *GoToTombstone()* sends the card anywhere you would want in the xPos and yPos for it.
+
+- *mousePressed()* is for holding any cards, handles the selection for attacking, attacking and deselecting a card.
+
+- *mouseReleased()* lets go of the card whenever you release the mouse.
+
+## Fields
 
 - *cardValue* is a variable that holds the value of the cards, as per the name. This value randomly changes every time it is called with “new Card()”.
 
@@ -44,6 +54,22 @@
 
 - *cardNumSize *changes the size of the number on the card, which is tracking the *cardValue*.
 
+- *isHovering* is a boolean that is used for checking if a mouse is over a card.
+
+- *isDraggingCard* is a boolean that checks if the mouse is holding the card and moving it around.
+
+- *isDestroyed* is a boolean that destroys a card when plugging it into some other logic that can get rid of the card.
+
+- *selectedCard* is a boolean that used for attacking other cards and specifying that this is the selected card.
+
+- *isAttacking* is a boolean that tracks whether a card is attacking or not.
+
+- *inZone* is a boolean that tracks if a card is in a zone or not.
+
+- *canSelectTarget* is a boolean that tracks if a card that "isAttacking" can select a card to attack
+
+- *isEnemy* and *isPlayer* are booleans that track if the card is an enemy or a player.
+
 # Deck Class
 
 ## Methods
@@ -52,23 +78,34 @@
 
 - *showDeck()* visualizes the deck, similar to *display()* in the Card class
 
-## Variables    
+- *enemyDraw()* draws the enemy card.
+
+## Fields    
 
 - *deckXPos* and *deckYPos* change the deck’s x and y position.
 
 - *deckWidth* and *deckHeight* change the deck’s width and height.
 
+- *deckColorR*, *deckColorG* and *deckColorB* all take integers for color.
+
+## Constructor
+
+### Deck(int mx, int my, int dColorR, int dColorG, int dColorB)
+
+- Parameters take a x position, y position, and RGB colors.
+
+
 # Player / Enemy Class
 
 ## Methods
 
-- *updatePlayer(Enemy)Card* updates the *cardValue* for whichever version of the method you use. This is especially useful for damage dealing and holding the values of who gets damaged.
+- *updatePlayerCard()* updates the *cardValue* for whichever version of the method you use. This is especially useful for damage dealing and holding the values of who gets damaged.
 
-- Only in the Enemy class, *updateTurn()*, if it isn't the player’s turn then a new card is made for the enemy and updates the *cardValue* for the enemies card into the *currentCardValue* to loop back again.
+- Only in the Enemy class, *updateTurn()*, if it isn't the player’s turn then a new card is made for the enemy.
 
-## Variables
+## Fields
 
-- *player(enemy)HP* holds the *defaultHP* value, this is to differentiate the two values for damage purposes.
+- *playerEnemyHP* holds the *defaultHP* value, this is to differentiate the two values for damage purposes.
 
 - *currentCardValue* holds whatever cardValue the player or enemy is given.
 
@@ -76,13 +113,21 @@
 
 ## Methods
 
+- *gameOverDisplay()* holds all the information for the game over screen.
+
 - *endTurn()* makes sure that if the player's turn is happening to make it false so that the enemy can play a card. This is all triggered when you press the deck.
 
 - *calcWinner()* calculates what value is higher or equal than each other. It is also able to end turns so that the game can loop.
 
-## Variables
+## Fields
 
 - *playerTurn* is a boolean that just tells us it is true, up until we press the deck where it becomes false and makes the enemy “pull” a card then back to being the player’s turn again.
+
+- *playerIsAttacking* is a boolean that tells us if the player is attacking or not.
+
+- *gameOverText* is a string that holds the text that shows when you win or lose.
+
+- *gameOverColor* holds a color value for the text that shows when you win or lose.
 
 # UI Class
 
@@ -98,7 +143,7 @@
 
 - *run()* grabs *display()* and *collision()* to one method to simplify it in the main file planetary questions.
 
-## Variables
+## Fields
 
 - *endTurnButton* is just for the ellipse to not make two separate x and y variables.
 
@@ -107,3 +152,37 @@
 - The boolean *insideButton* is used to check if the mouse is inside the button.
 
 - *c* is just for color values.
+
+# Zone Class
+
+## Methods
+
+- *playerZoneDisplay()* is the method that display's the player zone using whatever amount of *zoneSpots* that you want to use.
+
+- *enemyZoneDisplay()* does about the same thing the player's zone does but for the enemies side.
+
+- *zonesDisplay()* runs both of the zone methods together for easier use in the main file, planetary_questions.
+
+## Fields
+
+- *playerZoneX* holds the x value for the player.
+
+- *playerZoneY* holds the y value for the player.
+
+- *enemyZoneX* holds the x value for the enemy.
+
+- *enemyZoneY* holds the y value for the enemy.
+
+- *zoneWidth* for the width of the zones.
+
+- *zoneHeight* for the height of the zones.
+
+- *zoneSpacing* for the amount of x between each zone box (rects).
+
+- *zoneSpots* is how many spots that can place cards in.
+
+## Constructor
+
+### Zone(int x, int y)
+
+- This places a zone wherever you call it as long as you input an x and y integer.

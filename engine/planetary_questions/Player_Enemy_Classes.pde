@@ -27,19 +27,34 @@ class Enemy {
     if (!ts.playerTurn) {
       //Enemy Draws card
       //enemyDeck.enemyDraw();
-      
+
+      //for (int i = 0; i < zones.length; i++) {
+      //  enemyCard[i].xPos = zones[i].enemyZoneX;
+      //  enemyCard[i].yPos = zones[i].enemyZoneY;
+      //  enemyCard[i].inZone = true;
+      //}
+      //for (Card eCards : enemyCards) {
+      //  //if (currentCard.selectedCard) {
+      //  //  ts.currentPlayerAttackingCard = currentCard;
+      //  //}
+      //  eCards.xPos = zones
+      //}
       for (int i = 0; i < zones.length; i++) {
-        
-        //enemyCard[i].xPos = zones[i].enemyZoneX + i * (zones[i].zoneWidth + zones[i].zoneSpacing);
-        enemyCard[i].xPos = zones[i].enemyZoneX;
-        enemyCard[i].yPos = zones[i].enemyZoneY;
-        enemyCard[i].inZone = true;
+        Card eC = enemyCards.get(i);
+        if (!eC.isDestroyed) {
+          eC.run();
+          eC.xPos = zones[i].enemyZoneX;
+          eC.yPos = zones[i].enemyZoneY;
+          eC.inZone = true;
+        }
+        else if (eC.isDestroyed){
+          eC.run();
+          eC.xPos = eC.tombstoneXPos;
+          eC.yPos = eC.tombstoneYPos;
+          //eC.inZone = false;
+        }
       }
-      //enemy.updateEnemyCard(dcard.cardValue);
-      //ts.calcWinner();
+      ts.endTurn();
     }
   }
-  
-
-  //Card.cardValue =
 }

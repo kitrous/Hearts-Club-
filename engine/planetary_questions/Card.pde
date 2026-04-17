@@ -90,6 +90,8 @@ class Card {
     if (this.isDestroyed) {
       this.xPos = tombstoneXPos;
       this.yPos = tombstoneYPos;
+      
+      //this.inZone = false;
     }
   }
   
@@ -98,7 +100,6 @@ class Card {
     //checks if the card is hovering and if its in not in a zone already then it starts dragging
     if (this.isHovering && !inZone) {
       this.isDraggingCard = true;
-      println("anything");
     }
     
     //If selecting a player card when trying to attack
@@ -115,8 +116,6 @@ class Card {
         }
       }
       //ts.currentPlayerAttackingCard = get();
-      player.currentCardValue = this.cardValue;
-      this.cardValue = player.currentCardValue;
     }
     //Deselect a card to stop attacking
     else if (this.isHovering && inZone && ts.playerIsAttacking && ts.playerTurn && !isEnemy) {
@@ -126,14 +125,12 @@ class Card {
       //this.isAttacking = false;
       this.selectedCard = false;
       ts.playerIsAttacking = false;
-      player.currentCardValue = 0;
     }
     
     //If selecting a enemy card that you are trying to target
     if (this.isHovering && inZone && ts.playerIsAttacking && ts.playerTurn && this.isEnemy) {
       this.selectedCard = true;
-      
-      for (Card targetCard : enemyCard) {
+      for (Card targetCard : enemyCards) {
         if (targetCard.selectedCard) {
           ts.currentEnemyTarget = targetCard;
         }
@@ -152,6 +149,7 @@ class Card {
     boolean mPlayerCol = collision.mouseCollision(mouseX, mouseY, this.xPos, this.yPos, this.cardWidth, this.cardHeight);
     
     if (mPlayerCol == true && !isDraggingCard /*&& !holdingACard*/) {
+    if (mPlayerCol == true && !isDraggingCard && !isDestroyed) {
       this.isHovering = true;
       
       if ((xPos == startX && yPos == startY) || inZone) {
@@ -162,15 +160,16 @@ class Card {
         else {
           fill(cardColor);
           rect(xPos - cardWidth/2 * 4, yPos - cardHeight/2 * 2, 300, 200, 15);
+          rect(width * 0.17, height * 0.6, 300, 200, 15);
           fill(255);
           textSize(20);
           text(cardEffect.effectDescription, xPos - cardWidth/2, yPos - cardHeight/2, 40);
-          
           //fill(cardColor);
           //rect(200, 700, 300, 200, 15);
           //fill(255);
           //textSize(20);
           //text(cardEffect.effectDescription, 325, 750, 40);
+          text(cardEffect.effectDescription, width * 0.17 + 150, height * 0.6 + 100, 40);
         }
       }
     }

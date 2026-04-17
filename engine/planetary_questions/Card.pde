@@ -98,7 +98,7 @@ class Card {
     //checks if the card is hovering and if its in not in a zone already then it starts dragging
     if (this.isHovering && !inZone) {
       this.isDraggingCard = true;
-      println("anything");
+      println("Dragging");
     }
     
     //If selecting a player card when trying to attack

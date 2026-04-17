@@ -47,7 +47,7 @@ class TurnSystem {
   //Calculates which card wins when they are attacking each other
   void calcWinner() {
     if (playerIsAttacking && !playerTurn) {
-      println("Lol");
+      println("Winner");
       currentPlayerAttackingCard.cardValue -= currentEnemyTarget.damage;
       currentEnemyTarget.cardValue -= currentPlayerAttackingCard.damage;
       playerIsAttacking = false;

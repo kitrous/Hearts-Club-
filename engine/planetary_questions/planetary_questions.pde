@@ -1,8 +1,6 @@
 //Calling objects
 UI ui;
 TurnSystem ts;
-Card dcard;
-Card pCard1;
 
 Card[] enemyCard = new Card[5];
 ArrayList<Card> enemyCards = new ArrayList<Card>();
@@ -11,7 +9,7 @@ ArrayList<Card> defaultCard = new ArrayList<Card>();
 Zone[] zones = new Zone[5];
 //Zone zones;
 //Card pCard = new Array();
-Deck ddeck;
+Deck playerDeck;
 Deck enemyDeck;
 Player player;
 Enemy enemy;
@@ -19,7 +17,7 @@ Timer gameTimer;
 
 Collision collision;
 
-int defaultHP = 50;
+int defaultHP = 20, baseCardTotal = 5;
 
 int enemyCardValue = 0;
 
@@ -34,13 +32,13 @@ void setup() {
   collision = new Collision();
   
   gameTimer = new Timer();
-  //defaultCard = new ArrayList<Card>();
   //dcard = new Card(100, 600);
   
   //pCard1 = new Card (width/2, height/2);
   //Calls decks onto the main file
   enemyDeck = new Deck(width/2 + 500, height/2 - 300, 155, 55, 55);
-  ddeck = new Deck(width/2 + 500, height/2 + 100, 123, 200, 123);
+  enemyDeck.isEnemy = true;
+  playerDeck = new Deck(width/2 + 500, height/2 + 100, 123, 200, 123);
   
   //Calls the cards but for an array
   for (int i = 0; i < enemyCard.length; i++) {
@@ -78,30 +76,36 @@ void draw() {
   for (int i = 0; i < zones.length; i++){
       zones[i].zonesDisplay();
   }
-  //Displays enemy cards and sends cards to the tombstone when eliminated
+  //Displays enemy cards and handles other methods of enemy cards
   for (int i = 0; i < enemyCard.length; i++) {
         enemyCard[i].run();
   }
-  //Displays player cards and sends to the tombstone when eliminated
+  //Displays player cards and handles other methods of player cards
   for (int i = 0; i < defaultCard.size(); i++){
     Card dC = defaultCard.get(i);
     dC.run();
     //defaultCard[i].run();
   }
+  //Displays enemy cards and handles other methods of enemy cards
+  for (int i = 0; i < enemyCards.size(); i++){
+    Card eC = enemyCards.get(i);
+    eC.isEnemy = true;
+    eC.run();
+    //defaultCard[i].run();
+  }
+  
   // Shows both decks, runs the ui methods and ends the turn for the player when done
   enemyDeck.showDeck();
-  ddeck.showDeck();
+  playerDeck.showDeck();
   ui.run();
   enemy.updateTurn();
   ts.gameOverDisplay();
   ts.isGameOver();
-  
-  //println("Amount of cards in list " + defaultCard.size());
 }
 
 void mousePressed() {
   //allows the deck to be pressed
-  ddeck.mousePressed();
+  playerDeck.mousePressed();
   //pCard1.mousePressed();
   
   //allows the cards to be pressed and hovered on the mousex and mousey
@@ -110,6 +114,14 @@ void mousePressed() {
     Card dC = defaultCard.get(i);
     dC.run();
     dC.mousePressed();
+    //defaultCard[i].run();
+    //defaultCard[i].mousePressed();
+  }
+  //allows the cards to be pressed and hovered on the mouseX and mouseY
+  for (int i = 0; i < enemyCards.size(); i++) {
+    Card eC = enemyCards.get(i);
+    eC.run();
+    eC.mousePressed();
     //defaultCard[i].run();
     //defaultCard[i].mousePressed();
   }

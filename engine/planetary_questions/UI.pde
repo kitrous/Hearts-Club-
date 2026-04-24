@@ -53,6 +53,7 @@ class UI {
     // for the end turn button
     if (insideButton == true)
     {
+      ts.canRedraw = false;
       ts.endTurn();
       c = color(0, 0, 0);
       sw = 5;

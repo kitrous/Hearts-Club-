@@ -46,6 +46,8 @@ class Card {
     cCollision();
     display();
     goToTombstone();
+    
+    damage = cardValue;
   }
   
   // when dragging the card you selected it will use your mousex and mousey to update to that location
@@ -148,7 +150,6 @@ class Card {
   void mCollision() {
     boolean mPlayerCol = collision.mouseCollision(mouseX, mouseY, this.xPos, this.yPos, this.cardWidth, this.cardHeight);
     
-    if (mPlayerCol == true && !isDraggingCard /*&& !holdingACard*/) {
     if (mPlayerCol == true && !isDraggingCard && !isDestroyed) {
       this.isHovering = true;
       

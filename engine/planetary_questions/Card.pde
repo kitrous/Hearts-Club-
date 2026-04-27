@@ -160,16 +160,9 @@ class Card {
         }
         else {
           fill(cardColor);
-          rect(xPos - cardWidth/2 * 4, yPos - cardHeight/2 * 2, 300, 200, 15);
           rect(width * 0.17, height * 0.6, 300, 200, 15);
           fill(255);
           textSize(20);
-          text(cardEffect.effectDescription, xPos - cardWidth/2, yPos - cardHeight/2, 40);
-          //fill(cardColor);
-          //rect(200, 700, 300, 200, 15);
-          //fill(255);
-          //textSize(20);
-          //text(cardEffect.effectDescription, 325, 750, 40);
           text(cardEffect.effectDescription, width * 0.17 + 150, height * 0.6 + 100, 40);
         }
       }

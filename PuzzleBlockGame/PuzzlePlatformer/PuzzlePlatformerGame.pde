@@ -46,6 +46,7 @@ int amountOfSpeed;
 int amountOfBomb;
 
 boolean isLevel1Placed = true;
+boolean isLevel2Placed = false;
 
 //Window Size Settings
 void settings() {
@@ -91,7 +92,13 @@ void draw() {
       onScreenBlocks.add(new Block(250, height/2, 100, 200, 100, 100, 50));
       onScreenBlocks.add(new Block(450, height/2, 100, 200, 100, 50, 50));
       amountOfBlocks = 1;
-      isLevel1Placed = false;
+      
+    }
+    if (isLevel2Placed) {
+      onScreenBlocks.add(new Block(500,height/2, 100, 200, 100, 50, 50));
+      onScreenBlocks.add(new Block(250,height/2,100,200,100,50,50));
+      amountOfBlocks = 2;
+      isLevel2Placed = true;
     }
     drawBuildMode();
   }
@@ -178,6 +185,7 @@ void mousePressed() {
     if (mouseX > width/2 - 150 && mouseX < width/2 + 150 &&
       mouseY > 200 && mouseY < 260) {
       // Reset everything for a fresh new gameplay
+      isLevel1Placed = true;
       redScore = 0;
       blueScore = 0;
       winner = 0;

@@ -350,7 +350,7 @@ class BombPowerUp extends PowerUp {
   }
 
   void apply(Player player) {
-    float range = 100;
+    float range = 120;
    
    //looping backwards through blocks, it removes all blocks within a radius around the player 
     for (int i = onScreenBlocks.size()-1; i >=0; i--) {
@@ -484,10 +484,7 @@ void checkFinishReached() {
       redPlayer.y < finishY + 10) {
       redScore = min(redScore + 1, 4);   // add point up for Red to 4
       gameState = 1;                    // send them back to build mode 
-      resetPlayersToStart();    // send them back to start platform 
-      if (isLevel1Placed) {
-      isLevel2Placed = true;
-      }
+      resetPlayersToStart();    // send them back to start platform
   }
 
   // Blue player check

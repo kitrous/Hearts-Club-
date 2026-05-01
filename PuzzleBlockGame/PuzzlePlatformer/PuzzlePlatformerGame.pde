@@ -45,7 +45,7 @@ int amountOfBlocks;
 int amountOfSpeed;
 int amountOfBomb;
 
-boolean isLevel1Placed = true;
+boolean isLevel1Placed = false;
 boolean isLevel2Placed = false;
 
 //Window Size Settings
@@ -87,14 +87,19 @@ void draw() {
   // Build mode screen state to show give the option to build and place stuff
   else if (gameState == 1) {
 
-    if (isLevel1Placed) {
-      onScreenBlocks.add(new Block(width/2, height/2, 100, 200, 100, 50, 50));
+    if (!isLevel1Placed && redScore == 0) {
+      onScreenBlocks.add(new Block(width/2, 0, 100, 200, 100, 50, 400));
       onScreenBlocks.add(new Block(250, height/2, 100, 200, 100, 100, 50));
       onScreenBlocks.add(new Block(450, height/2, 100, 200, 100, 50, 50));
-      amountOfBlocks = 1;
+      //onScreenBlocks.add(new Block(450, height/2, 100, 200, 100, 50, 50));
+      amountOfBlocks = 5;
+      amountOfSpeed = 0;
+      amountOfBomb = 0;
+      isLevel1Placed = true;
       
     }
-    if (isLevel2Placed) {
+    if (!isLevel2Placed && redScore == 1) {
+      onScreenBlocks.clear();
       onScreenBlocks.add(new Block(500,height/2, 100, 200, 100, 50, 50));
       onScreenBlocks.add(new Block(250,height/2,100,200,100,50,50));
       amountOfBlocks = 2;
@@ -217,8 +222,8 @@ void mousePressed() {
       holdingBombPowerUp = false;
     }
     // Speed PowerUp (matches circle at y=260)
-    else if (mouseX > width - 150 && mouseX < width - 50 &&
-      mouseY > 240 && mouseY < 270) {
+    else if ((mouseX > width - 150 && mouseX < width - 50 &&
+      mouseY > 240 && mouseY < 270) && amountOfSpeed > 0) {
       holdingPowerUp = true;
       holdingSpeedPowerUp = true;
       holdingBombPowerUp = false;
@@ -226,8 +231,8 @@ void mousePressed() {
       holdingSpike = false;
     }
     // Bomb PowerUp (matches circle at y=315)
-    else if (mouseX > width - 150 && mouseX < width - 50 &&
-      mouseY > 295 && mouseY < 325) {
+    else if ((mouseX > width - 150 && mouseX < width - 50 &&
+      mouseY > 295 && mouseY < 325) && amountOfBomb > 0) {
       holdingPowerUp = true;
       holdingBombPowerUp = true;
       holdingSpeedPowerUp = false;
@@ -255,8 +260,10 @@ void mousePressed() {
       else if (holdingPowerUp) {
         if (holdingSpeedPowerUp) {
           powerUps.add(new SpeedPowerUp(px, py));
+          amountOfSpeed -= 1;
         } else if (holdingBombPowerUp) {
           powerUps.add(new BombPowerUp(px, py));
+          amountOfBomb -= 1;
         }
         holdingPowerUp = false;
         holdingBombPowerUp = false;

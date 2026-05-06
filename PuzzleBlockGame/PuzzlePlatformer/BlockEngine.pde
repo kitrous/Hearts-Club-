@@ -614,11 +614,12 @@ void drawInventory() {
   textSize(20); 
   text ("Speed", width - 100, 260);
 
-  if (dist(mouseX, mouseY, width - 100, 255) < 15) {
-   holdingPowerUp = true;
-   holdingSpeedPowerUp = true;
-   holdingBombPowerUp = false;
-  }
+  //Bug Here
+  //if (dist(mouseX, mouseY, width - 100, 255) < 15) {
+  // holdingPowerUp = true;
+  // holdingSpeedPowerUp = true;
+  // holdingBombPowerUp = false;
+  //}
  
   // Bomb Button
   fill(134, 41, 27);
@@ -628,11 +629,12 @@ void drawInventory() {
   textSize(20); 
   text ("Bomb", width - 100, 315);
 
-  if (dist(mouseX, mouseY, width - 100, 310) < 15) {
-    holdingPowerUp = true;
-    holdingBombPowerUp = true;
-    holdingSpeedPowerUp = false;
-  }
+  //Bug Here
+  //if (dist(mouseX, mouseY, width - 100, 310) < 15) {
+  //  holdingPowerUp = true;
+  //  holdingBombPowerUp = true;
+  //  holdingSpeedPowerUp = false;
+  //}
 }
  
 // DRAW BLOCKS, SPIKES, POWERUPS

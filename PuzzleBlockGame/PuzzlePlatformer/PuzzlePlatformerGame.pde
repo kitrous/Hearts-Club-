@@ -92,16 +92,16 @@ void draw() {
       onScreenBlocks.add(new Block(250, height/2, 100, 200, 100, 100, 50));
       onScreenBlocks.add(new Block(450, height/2, 100, 200, 100, 50, 50));
       //onScreenBlocks.add(new Block(450, height/2, 100, 200, 100, 50, 50));
-      amountOfBlocks = 5;
+      redPlayer.moveSpeed = 4;
+      amountOfBlocks = 2;
       amountOfSpeed = 0;
       amountOfBomb = 0;
       isLevel1Placed = true;
-      
-    }
-    if (!isLevel2Placed && redScore == 1) {
+    } else if (!isLevel2Placed && redScore == 1) {
       onScreenBlocks.clear();
-      onScreenBlocks.add(new Block(500,height/2, 100, 200, 100, 50, 50));
-      onScreenBlocks.add(new Block(250,height/2,100,200,100,50,50));
+      onScreenBlocks.add(new Block(500, height/2, 100, 200, 100, 50, 50));
+      onScreenBlocks.add(new Block(250, height/2, 100, 200, 100, 50, 50));
+      redPlayer.moveSpeed = 4;
       amountOfBlocks = 2;
       isLevel2Placed = true;
     }
@@ -281,6 +281,17 @@ void keyPressed() {
   //checks if p key is being pressed and sends them into play mode
   if (gameState == 1 && key == 'p') {
     gameState = 2;          // play mode
+  }
+
+  if (gameState == 1 && key == 'z') {
+
+    if (redScore == 0) {
+      onScreenBlocks.clear();
+      onScreenBlocks.add(new Block(width/2, 0, 100, 200, 100, 50, 400));
+      onScreenBlocks.add(new Block(250, height/2, 100, 200, 100, 100, 50));
+      onScreenBlocks.add(new Block(450, height/2, 100, 200, 100, 50, 50));
+    }
+    
   }
 
   //checks if b key is being pressed and sends them into build mode

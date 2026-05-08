@@ -47,6 +47,7 @@ int amountOfBomb;
 
 boolean isLevel1Placed = false;
 boolean isLevel2Placed = false;
+boolean isLevel3Placed = false;
 boolean isLevel4Placed = false;
 
 //Window Size Settings
@@ -88,6 +89,8 @@ void draw() {
   // Build mode screen state to show give the option to build and place stuff
   else if (gameState == 1) {
     if (!isLevel1Placed && redScore == 0) {
+
+
       onScreenBlocks.add(new Block(width/2, 0, 100, 200, 100, 50, 400));
       onScreenBlocks.add(new Block(250, height/2, 100, 200, 100, 100, 50));
       onScreenBlocks.add(new Block(450, height/2, 100, 200, 100, 50, 50));
@@ -97,7 +100,8 @@ void draw() {
       amountOfSpeed = 0;
       amountOfBomb = 0;
       isLevel1Placed = true;
-    } else if (!isLevel2Placed && redScore == 1) {
+    }
+    if (!isLevel2Placed && redScore == 1) {
       onScreenBlocks.clear();
       onScreenBlocks.add(new Block(500, height/2, 100, 200, 100, 50, 50));
       onScreenBlocks.add(new Block(250, height/2, 100, 200, 100, 50, 50));
@@ -108,24 +112,26 @@ void draw() {
       amountOfBlocks = 4;
       isLevel2Placed = true;
     }
-    //if (!isLevel1Placed && redScore == 0) {
-    //  onScreenBlocks.add(new Block(width/2, 0, 100, 200, 100, 50, 400));
-    //  onScreenBlocks.add(new Block(250, height/2, 100, 200, 100, 100, 50));
-    //  onScreenBlocks.add(new Block(450, height/2, 100, 200, 100, 50, 50));
-    //  //onScreenBlocks.add(new Block(450, height/2, 100, 200, 100, 50, 50));
-    //  amountOfBlocks = 5;
-    //  amountOfSpeed = 5;
-    //  amountOfBomb = 1;
-    //  isLevel1Placed = true;
+    if (!isLevel3Placed && redScore == 2) {
+      onScreenBlocks.add(new Block(50, 200, 100, 200, 100, 150, 50));
+      onScreenBlocks.add(new Block(0, 200, 100, 200, 100, 50, 150));
+      onScreenBlocks.add(new Block(200, 200, 100, 200, 100, 50, 150));
+      onScreenBlocks.add(new Block(0, 500, 100, 200, 100, 100, 50));
+      onScreenBlocks.add(new Block(150, 500, 100, 200, 100, 100, 50));
+      //onScreenBlocks.add(new Block(100,350,100,200,100,1000,50));
+      onScreenBlocks.add(new Block(300, 500, 100, 200, 100, 100, 50));
+      onScreenBlocks.add(new Block(450, 500, 100, 200, 100, 100, 50));
+      onScreenBlocks.add(new Block(550, 400, 100, 200, 100, 50, 100));
+      onScreenBlocks.add(new Block(850, 300, 100, 200, 100, 50, 100));
+      onScreenBlocks.add(new Block(600, 450, 100, 200, 100, 100, 50));
+      onScreenBlocks.add(new Block(750, 400, 100, 200, 100, 100, 50));
+      onScreenBlocks.add(new Block(900, 350, 100, 200, 100, 100, 50));
 
-    //}
-    //if (!isLevel2Placed && redScore == 1) {
-    //  onScreenBlocks.clear();
-    //  onScreenBlocks.add(new Block(500,height/2, 100, 200, 100, 50, 50));
-    //  onScreenBlocks.add(new Block(250,height/2,100,200,100,50,50));
-    //  amountOfBlocks = 2;
-    //  isLevel2Placed = true;
-    //}
+      amountOfBlocks = 0;
+      amountOfSpeed = 0;
+      amountOfBomb = 3;
+      isLevel3Placed = true;
+    }
 
     // remember to change the 0 to 3 later
     if (!isLevel4Placed && redScore == 0) {

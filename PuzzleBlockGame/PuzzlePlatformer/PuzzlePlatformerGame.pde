@@ -110,14 +110,15 @@ void draw() {
     // remember to change the 0 to 3 later
     if (!isLevel4Placed && redScore == 0) {
        //onScreenBlocks.add(new Block(Xpos, Ypos, r, g, b, width, height));
-      onScreenBlocks.add(new Block(width/2, 0, 100, 200, 100, 50, 100));
+      onScreenBlocks.add(new Block(width/2, 150, 100, 200, 100, 50, 200));
       onScreenBlocks.add(new Block(250, height/2, 100, 200, 100, 100, 50));
       onScreenBlocks.add(new Block(450, height/2, 100, 200, 100, 50, 50));
       //onScreenBlocks.add(new Block(450, height/2, 100, 200, 100, 50, 50));
-      amountOfBlocks = 2;
+      amountOfBlocks = 4;
       amountOfSpeed = 1;
-      amountOfBomb = 0;
-      isLevel1Placed = true;
+      amountOfBomb = 1;
+      spikeBlocks.add(new SpikeBlock(700,height/2-160));
+      isLevel4Placed = true;
     }
     drawBuildMode();
   }

@@ -47,6 +47,7 @@ int amountOfBomb;
 
 boolean isLevel1Placed = false;
 boolean isLevel2Placed = false;
+boolean isLevel4Placed = false;
 
 //Window Size Settings
 void settings() {
@@ -86,7 +87,6 @@ void draw() {
   //Level 1 Build Mode
   // Build mode screen state to show give the option to build and place stuff
   else if (gameState == 1) {
-
     if (!isLevel1Placed && redScore == 0) {
       onScreenBlocks.add(new Block(width/2, 0, 100, 200, 100, 50, 400));
       onScreenBlocks.add(new Block(250, height/2, 100, 200, 100, 100, 50));
@@ -104,6 +104,37 @@ void draw() {
       redPlayer.moveSpeed = 4;
       amountOfBlocks = 2;
       isLevel2Placed = true;
+    //if (!isLevel1Placed && redScore == 0) {
+    //  onScreenBlocks.add(new Block(width/2, 0, 100, 200, 100, 50, 400));
+    //  onScreenBlocks.add(new Block(250, height/2, 100, 200, 100, 100, 50));
+    //  onScreenBlocks.add(new Block(450, height/2, 100, 200, 100, 50, 50));
+    //  //onScreenBlocks.add(new Block(450, height/2, 100, 200, 100, 50, 50));
+    //  amountOfBlocks = 5;
+    //  amountOfSpeed = 5;
+    //  amountOfBomb = 1;
+    //  isLevel1Placed = true;
+      
+    //}
+    //if (!isLevel2Placed && redScore == 1) {
+    //  onScreenBlocks.clear();
+    //  onScreenBlocks.add(new Block(500,height/2, 100, 200, 100, 50, 50));
+    //  onScreenBlocks.add(new Block(250,height/2,100,200,100,50,50));
+    //  amountOfBlocks = 2;
+    //  isLevel2Placed = true;
+    //}
+    
+    // remember to change the 0 to 3 later
+    if (!isLevel4Placed && redScore == 0) {
+       //onScreenBlocks.add(new Block(Xpos, Ypos, r, g, b, width, height));
+      onScreenBlocks.add(new Block(width/2, 150, 100, 200, 100, 50, 200));
+      onScreenBlocks.add(new Block(250, height/2, 100, 200, 100, 100, 50));
+      onScreenBlocks.add(new Block(539, height/2, 100, 200, 100, 50, 50));
+      //onScreenBlocks.add(new Block(450, height/2, 100, 200, 100, 50, 50));
+      amountOfBlocks = 3;
+      amountOfSpeed = 1;
+      amountOfBomb = 1;
+      spikeBlocks.add(new SpikeBlock(700,height/2-160));
+      isLevel4Placed = true;
     }
     drawBuildMode();
   }

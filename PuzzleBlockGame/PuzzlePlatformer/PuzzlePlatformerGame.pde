@@ -117,7 +117,7 @@ void draw() {
       onScreenBlocks.add(new Block(200,200,100,200,100,50,150));
       onScreenBlocks.add(new Block(0,500,100,200,100,100,50));
       onScreenBlocks.add(new Block(150,500,100,200,100,100,50));
-      onScreenBlocks.add(new Block(-900,350,100,200,100,2000,50));
+      onScreenBlocks.add(new Block(-900,300,100,200,100,2000,50));
       onScreenBlocks.add(new Block(300,500,100,200,100,100,50));
       onScreenBlocks.add(new Block(450,500,100,200,100,100,50));
       onScreenBlocks.add(new Block(550,400,100,200,100,50,100));

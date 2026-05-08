@@ -350,7 +350,7 @@ class BombPowerUp extends PowerUp {
   }
 
   void apply(Player player) {
-    float range = 120;
+    float range = 105;
    
    //looping backwards through blocks, it removes all blocks within a radius around the player 
     for (int i = onScreenBlocks.size()-1; i >=0; i--) {

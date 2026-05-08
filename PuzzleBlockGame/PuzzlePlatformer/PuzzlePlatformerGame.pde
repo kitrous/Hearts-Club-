@@ -325,7 +325,32 @@ void keyPressed() {
       onScreenBlocks.add(new Block(width/2, 0, 100, 200, 100, 50, 400));
       onScreenBlocks.add(new Block(250, height/2, 100, 200, 100, 100, 50));
       onScreenBlocks.add(new Block(450, height/2, 100, 200, 100, 50, 50));
+      redPlayer.moveSpeed = 4;
+      amountOfBlocks = 2;
+      amountOfSpeed = 0;
+      amountOfBomb = 0;
     }
+    //if (redScore == 1) {
+    //  onScreenBlocks.clear();
+    //  redPlayer.moveSpeed = 4;
+    //  amountOfBlocks = 0;
+    //  amountOfSpeed = 0;
+    //  amountOfBomb = 0;
+    //}
+    //if (redScore == 2) {
+    //  onScreenBlocks.clear();
+    //  redPlayer.moveSpeed = 4;
+    //  amountOfBlocks = 0;
+    //  amountOfSpeed = 0;
+    //  amountOfBomb = 0;
+    //}
+    //if (redScore == 3) {
+    //  onScreenBlocks.clear();
+    //  redPlayer.moveSpeed = 4;
+    //  amountOfBlocks = 0;
+    //  amountOfSpeed = 0;
+    //  amountOfBomb = 0;
+    //}
   }
 
   //checks if b key is being pressed and sends them into build mode

@@ -112,9 +112,9 @@ void draw() {
        //onScreenBlocks.add(new Block(Xpos, Ypos, r, g, b, width, height));
       onScreenBlocks.add(new Block(width/2, 150, 100, 200, 100, 50, 200));
       onScreenBlocks.add(new Block(250, height/2, 100, 200, 100, 100, 50));
-      onScreenBlocks.add(new Block(450, height/2, 100, 200, 100, 50, 50));
+      onScreenBlocks.add(new Block(539, height/2, 100, 200, 100, 50, 50));
       //onScreenBlocks.add(new Block(450, height/2, 100, 200, 100, 50, 50));
-      amountOfBlocks = 4;
+      amountOfBlocks = 3;
       amountOfSpeed = 1;
       amountOfBomb = 1;
       spikeBlocks.add(new SpikeBlock(700,height/2-160));

@@ -45,7 +45,7 @@ int amountOfBlocks;
 int amountOfSpeed;
 int amountOfBomb;
 
-boolean isLevel1Placed = true;
+boolean isLevel1Placed = false;
 boolean isLevel2Placed = false;
 
 //Window Size Settings
@@ -87,17 +87,23 @@ void draw() {
   // Build mode screen state to show give the option to build and place stuff
   else if (gameState == 1) {
 
-    if (isLevel1Placed) {
+    if (!isLevel1Placed && redScore == 0) {
       onScreenBlocks.add(new Block(width/2, height/2, 100, 200, 100, 50, 50));
       onScreenBlocks.add(new Block(250, height/2, 100, 200, 100, 100, 50));
       onScreenBlocks.add(new Block(450, height/2, 100, 200, 100, 50, 50));
       amountOfBlocks = 1;
+      isLevel1Placed = true;
       
     }
-    if (isLevel2Placed) {
+    if (!isLevel2Placed && redScore == 1) {
+      onScreenBlocks.clear();
       onScreenBlocks.add(new Block(500,height/2, 100, 200, 100, 50, 50));
       onScreenBlocks.add(new Block(250,height/2,100,200,100,50,50));
-      amountOfBlocks = 2;
+      onScreenBlocks.add(new Block(1000,height/2-180, 100, 200, 100,50, 250));
+      onScreenBlocks.add(new Block(600,height/2+180,100,200,100,50,50));
+      onScreenBlocks.add(new Block(600,height/2-180, 100, 200, 100, 50,250));
+      spikeBlocks.add(new SpikeBlock(350,height/2-65));
+      amountOfBlocks = 4;
       isLevel2Placed = true;
     }
     drawBuildMode();

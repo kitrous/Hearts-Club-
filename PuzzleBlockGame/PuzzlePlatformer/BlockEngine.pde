@@ -485,9 +485,6 @@ void checkFinishReached() {
       redScore = min(redScore + 1, 4);   // add point up for Red to 4
       gameState = 1;                    // send them back to build mode 
       resetPlayersToStart();    // send them back to start platform 
-      if (isLevel1Placed) {
-      isLevel2Placed = true;
-      }
   }
 
   // Blue player check

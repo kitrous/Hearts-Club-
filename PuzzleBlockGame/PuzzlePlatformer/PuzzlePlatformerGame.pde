@@ -36,7 +36,7 @@ int selectedSize = 1400;  // default window size
 
 // Keeps track of points and who wins
 // Player scores
-int redScore = 0; // 0 is Level 1, 1 is level 2, etc.
+int redScore = 3; // 0 is Level 1, 1 is level 2, etc.
 int blueScore = 0;
 
 int winner = 0; // 0 = none, 1 = red wins, 2 = blue wins
@@ -92,6 +92,10 @@ void draw() {
 
     // Draw boxes for Start and sizes
     drawStartMenu();
+    isLevel1Placed = false;
+    isLevel2Placed = false;
+    isLevel3Placed = false;
+    isLevel4Placed = false;
   }
   //Level 1 Build Mode
   // Build mode screen state to show give the option to build and place stuff

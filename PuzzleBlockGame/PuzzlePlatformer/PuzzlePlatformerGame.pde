@@ -36,7 +36,7 @@ int selectedSize = 1400;  // default window size
 
 // Keeps track of points and who wins
 // Player scores
-int redScore = 3; // 0 is Level 1, 1 is level 2, etc.
+int redScore = 0; // 0 is Level 1, 1 is level 2, etc.
 int blueScore = 0;
 
 int winner = 0; // 0 = none, 1 = red wins, 2 = blue wins

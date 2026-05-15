@@ -36,7 +36,8 @@ int selectedSize = 1400;  // default window size
 
 // Keeps track of points and who wins
 // Player scores
-int redScore = 2;
+
+int redScore = 0; // 0 is Level 1, 1 is level 2, etc.
 int blueScore = 0;
 
 int winner = 0; // 0 = none, 1 = red wins, 2 = blue wins
@@ -48,6 +49,15 @@ int amountOfBomb;
 boolean isLevel1Placed = false;
 boolean isLevel2Placed = false;
 boolean isLevel3Placed = false;
+boolean isLevel4Placed = false;
+
+int playerTrailSize = 20;
+float pTrailX[] = new float[playerTrailSize];
+float pTrailY[] = new float[playerTrailSize];
+
+int pDustSize = 7;
+float pDustX[] = new float[pDustSize];
+float pDustY[] = new float[pDustSize];
 
 //Window Size Settings
 void settings() {
@@ -74,8 +84,6 @@ void setup() {
 
 // DRAW LOOP
 void draw() {
-  
-  
   if (gameState == 0) {
     background(30);
     textAlign(CENTER, CENTER);
@@ -85,60 +93,35 @@ void draw() {
 
     // Draw boxes for Start and sizes
     drawStartMenu();
+    isLevel1Placed = false;
+    isLevel2Placed = false;
+    isLevel3Placed = false;
+    isLevel4Placed = false;
   }
   //Level 1 Build Mode
   // Build mode screen state to show give the option to build and place stuff
   else if (gameState == 1) {
-
     if (!isLevel1Placed && redScore == 0) {
-     
-  
-      onScreenBlocks.add(new Block(width/2, 0, 100, 200, 100, 50, 400));
-      onScreenBlocks.add(new Block(250, height/2, 100, 200, 100, 100, 50));
-      onScreenBlocks.add(new Block(450, height/2, 100, 200, 100, 50, 50));
-      onScreenBlocks.add(new Block(450, height/2, 100, 200, 100, 50, 50));
-      amountOfBlocks = 5;
-      amountOfSpeed = 0;
-      amountOfBomb = 0;
+      ResetLevel();
+      PlaceLevel1();
       isLevel1Placed = true;
-     
     }
     if (!isLevel2Placed && redScore == 1) {
-      onScreenBlocks.clear();
-      onScreenBlocks.add(new Block(500,height/2, 100, 200, 100, 50, 50));
-      onScreenBlocks.add(new Block(250,height/2,100,200,100,50,50));
-      amountOfBlocks = 2;
+      ResetLevel();
+      PlaceLevel2();
       isLevel2Placed = true;
     }
-    
-     if (!isLevel3Placed && redScore == 2) {
-      onScreenBlocks.clear();
-      powerUps.clear();
-      //onScreenBlocks.add(new Block(-900,300,100,200,100,2000,50));
-      onScreenBlocks.add(new Block(50,200,100,200,100,150,50));
-      onScreenBlocks.add(new Block(0,200,100,200,100,50,150));
-      onScreenBlocks.add(new Block(200,200,100,200,100,50,150));
-      onScreenBlocks.add(new Block(0,500,100,200,100,100,50));
-      onScreenBlocks.add(new Block(400,250,100,200,100,100,50));
-      onScreenBlocks.add(new Block(700,250,100,200,100,100,50));
-      onScreenBlocks.add(new Block(450,500,100,200,100,100,50));
-      onScreenBlocks.add(new Block(550,400,100,200,100,50,100));
-      onScreenBlocks.add(new Block(850,300,100,200,100,50,100));
-      onScreenBlocks.add(new Block(600,450,100,200,100,100,50));
-      onScreenBlocks.add(new Block(750,400,100,200,100,100,50));
-      onScreenBlocks.add(new Block(900,350,100,200,100,100,50));
-      onScreenBlocks.add(new Block(1000,200,100,200,100,50,150));
-      onScreenBlocks.add(new Block(1050,200,100,200,100,100,50));
-      onScreenBlocks.add(new Block(1150,200,100,200,100,50,150));
-      onScreenBlocks.add(new Block(350,150,100,200,100,150,10));
-      onScreenBlocks.add(new Block(550,100,100,200,100,100,10));
-      onScreenBlocks.add(new Block(850,50,100,200,100,50,250));
-      
-      amountOfBlocks = 1;
-      amountOfSpeed = 1;
-      amountOfBomb = 3;
+    if (!isLevel3Placed && redScore == 2) {
+      ResetLevel();
+      PlaceLevel3();
       isLevel3Placed = true;
-      
+    }
+
+    // remember to change the 0 to 3 later
+    if (!isLevel4Placed && redScore == 3) {
+      ResetLevel();
+      PlaceLevel4();
+      isLevel4Placed = true;
     }
     drawBuildMode();
   }
@@ -317,6 +300,31 @@ void keyPressed() {
   if (gameState == 1 && key == 'p') {
     gameState = 2;          // play mode
   }
+  
+  //If in BuildMode and Z key is pressed
+  if (gameState == 1 && key == 'z') {
+
+    //If level 1, undos all actions
+    if (redScore == 0) {
+      ResetLevel();
+      PlaceLevel1();
+    }
+    //If level 2, undos all actions
+    if (redScore == 1) {
+      ResetLevel();
+      PlaceLevel2();
+    }
+    //If level 3, undos all actions
+    if (redScore == 2) {
+      ResetLevel();
+      PlaceLevel3();
+    }
+    //If level 4, undos all actions
+    if (redScore == 3) {
+      ResetLevel();
+      PlaceLevel4();
+    }
+  }
 
   //checks if b key is being pressed and sends them into build mode
   if (gameState == 2 && key == 'b') {
@@ -356,6 +364,74 @@ void drawWinScreen() {
   fill(255);
   textSize(24);
   text("Play again", width/2, 230);
+}
+
+//Resets specific stats of level... 
+//...so either a new level can be placed or actions can undo
+void ResetLevel() {
+  onScreenBlocks.clear();
+  spikeBlocks.clear();
+  powerUps.clear();
+  redPlayer.moveSpeed = 4;
+}
+
+void PlaceLevel1() {
+  onScreenBlocks.add(new Block(width/2, 0, 100, 200, 100, 50, 400));
+  onScreenBlocks.add(new Block(250, height/2, 100, 200, 100, 100, 50));
+  onScreenBlocks.add(new Block(450, height/2, 100, 200, 100, 50, 50));
+  amountOfBlocks = 2;
+  amountOfSpeed = 0;
+  amountOfBomb = 0;
+}
+
+void PlaceLevel2() {
+  onScreenBlocks.add(new Block(500, height/2, 100, 200, 100, 50, 50));
+  onScreenBlocks.add(new Block(250, height/2, 100, 200, 100, 50, 50));
+  onScreenBlocks.add(new Block(1000, height/2-180, 100, 200, 100, 50, 250));
+  onScreenBlocks.add(new Block(600, height/2+180, 100, 200, 100, 50, 50));
+  onScreenBlocks.add(new Block(600, height/2-180, 100, 200, 100, 50, 250));
+  spikeBlocks.add(new SpikeBlock(350, height/2-65));
+  amountOfBlocks = 4;
+  amountOfSpeed = 1;
+}
+
+void PlaceLevel3() {
+  //onScreenBlocks.add(new Block(-900,300,100,200,100,2000,50));
+      onScreenBlocks.add(new Block(50,200,100,200,100,150,50));
+      onScreenBlocks.add(new Block(0,200,100,200,100,50,150));
+      onScreenBlocks.add(new Block(200,200,100,200,100,50,150));
+      onScreenBlocks.add(new Block(0,500,100,200,100,100,50));
+      onScreenBlocks.add(new Block(400,250,100,200,100,100,50));
+      onScreenBlocks.add(new Block(700,250,100,200,100,100,50));
+      onScreenBlocks.add(new Block(450,500,100,200,100,100,50));
+      onScreenBlocks.add(new Block(550,400,100,200,100,50,100));
+      onScreenBlocks.add(new Block(850,300,100,200,100,50,100));
+      onScreenBlocks.add(new Block(600,450,100,200,100,100,50));
+      onScreenBlocks.add(new Block(750,400,100,200,100,100,50));
+      onScreenBlocks.add(new Block(900,350,100,200,100,100,50));
+      onScreenBlocks.add(new Block(1000,200,100,200,100,50,150));
+      onScreenBlocks.add(new Block(1050,200,100,200,100,100,50));
+      onScreenBlocks.add(new Block(1150,200,100,200,100,50,150));
+      onScreenBlocks.add(new Block(350,150,100,200,100,150,10));
+      onScreenBlocks.add(new Block(550,100,100,200,100,100,10));
+      onScreenBlocks.add(new Block(850,50,100,200,100,50,250));
+      
+      amountOfBlocks = 1;
+      amountOfSpeed = 1;
+      amountOfBomb = 3;
+}
+
+void PlaceLevel4() {
+  //onScreenBlocks.add(new Block(Xpos, Ypos, r, g, b, width, height));
+  onScreenBlocks.add(new Block(width/2, 150, 100, 200, 100, 50, 200));
+  onScreenBlocks.add(new Block(250, height/2, 100, 200, 100, 100, 50));
+  onScreenBlocks.add(new Block(539, height/2, 100, 200, 100, 50, 50));
+  //onScreenBlocks.add(new Block(450, height/2, 100, 200, 100, 50, 50));
+  spikeBlocks.add(new SpikeBlock(700, height/2-160));
+  
+  amountOfBlocks = 3;
+  amountOfSpeed = 1;
+  amountOfBomb = 1;
 }
 
 // MAIN GAME END

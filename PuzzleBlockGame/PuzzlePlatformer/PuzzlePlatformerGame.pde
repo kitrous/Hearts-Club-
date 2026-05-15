@@ -112,22 +112,30 @@ void draw() {
     }
     
      if (!isLevel3Placed && redScore == 2) {
-         onScreenBlocks.add(new Block(50,200,100,200,100,150,50));
+      onScreenBlocks.clear();
+      powerUps.clear();
+      //onScreenBlocks.add(new Block(-900,300,100,200,100,2000,50));
+      onScreenBlocks.add(new Block(50,200,100,200,100,150,50));
       onScreenBlocks.add(new Block(0,200,100,200,100,50,150));
       onScreenBlocks.add(new Block(200,200,100,200,100,50,150));
       onScreenBlocks.add(new Block(0,500,100,200,100,100,50));
-      onScreenBlocks.add(new Block(150,500,100,200,100,100,50));
-      onScreenBlocks.add(new Block(-900,300,100,200,100,2000,50));
-      onScreenBlocks.add(new Block(300,500,100,200,100,100,50));
+      onScreenBlocks.add(new Block(400,250,100,200,100,100,50));
+      onScreenBlocks.add(new Block(700,250,100,200,100,100,50));
       onScreenBlocks.add(new Block(450,500,100,200,100,100,50));
       onScreenBlocks.add(new Block(550,400,100,200,100,50,100));
       onScreenBlocks.add(new Block(850,300,100,200,100,50,100));
       onScreenBlocks.add(new Block(600,450,100,200,100,100,50));
       onScreenBlocks.add(new Block(750,400,100,200,100,100,50));
       onScreenBlocks.add(new Block(900,350,100,200,100,100,50));
+      onScreenBlocks.add(new Block(1000,200,100,200,100,50,150));
+      onScreenBlocks.add(new Block(1050,200,100,200,100,100,50));
+      onScreenBlocks.add(new Block(1150,200,100,200,100,50,150));
+      onScreenBlocks.add(new Block(350,150,100,200,100,150,10));
+      onScreenBlocks.add(new Block(550,100,100,200,100,100,10));
+      onScreenBlocks.add(new Block(850,50,100,200,100,50,200));
       
-      amountOfBlocks = 0;
-      amountOfSpeed = 0;
+      amountOfBlocks = 1;
+      amountOfSpeed = 1;
       amountOfBomb = 3;
       isLevel3Placed = true;
       

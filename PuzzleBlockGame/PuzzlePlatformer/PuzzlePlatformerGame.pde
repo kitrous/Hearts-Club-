@@ -36,7 +36,7 @@ int selectedSize = 1400;  // default window size
 
 // Keeps track of points and who wins
 // Player scores
-int redScore = 0;
+int redScore = 2;
 int blueScore = 0;
 
 int winner = 0; // 0 = none, 1 = red wins, 2 = blue wins
@@ -132,7 +132,7 @@ void draw() {
       onScreenBlocks.add(new Block(1150,200,100,200,100,50,150));
       onScreenBlocks.add(new Block(350,150,100,200,100,150,10));
       onScreenBlocks.add(new Block(550,100,100,200,100,100,10));
-      onScreenBlocks.add(new Block(850,50,100,200,100,50,200));
+      onScreenBlocks.add(new Block(850,50,100,200,100,50,250));
       
       amountOfBlocks = 1;
       amountOfSpeed = 1;

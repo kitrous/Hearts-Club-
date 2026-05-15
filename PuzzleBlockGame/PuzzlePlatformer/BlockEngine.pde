@@ -553,6 +553,7 @@ void drawBuildMode() {
   textSize(24);
   text("Press P to Play", width - 100, 360);
   text("Press S to Save", width - 100, 390);
+  text("Press Z to\n Undo all actions", width - 100, 420);
   text("" + amountOfBlocks, width - 175, 130);
   text("" + amountOfSpeed, width - 175, 260);
   text("" + amountOfBomb, width - 175, 315);
@@ -723,7 +724,32 @@ void drawPlayMode() {
   for (PowerUp p : powerUps) {
     p.display();
   }
+  
+  //Dust Effect
+  int dWhich = frameCount % pDustSize;
+    pDustX[dWhich] = redPlayer.x + redPlayer.w/2;
+    pDustY[dWhich] = redPlayer.y + redPlayer.h - 4;
 
+    for (int i = 0; i < pDustSize; i++) {
+      int index = (dWhich + 1 + i) % pDustSize;
+      fill(0, 0, 0, 25);
+      ellipse(pDustX[index], pDustY[index], i, i);
+      ellipse(pDustX[index] - 5, pDustY[index], i, i);
+      ellipse(pDustX[index] + 5, pDustY[index], i, i);
+    }
+  
+  if (redPlayer.moveSpeed > 4) {
+      int which = frameCount % playerTrailSize;
+      pTrailX[which] = redPlayer.x + redPlayer.w/2;
+      pTrailY[which] = redPlayer.y + redPlayer.h/2;
+
+      for (int i = 0; i < playerTrailSize; i++) {
+        int index = (which + 1 + i) % playerTrailSize;
+        fill(255, 0, 0, 25);
+        ellipse(pTrailX[index], pTrailY[index], i, i);
+      }
+    }
+  
   // Updates both players with movement and gravity
   redPlayer.update();
   bluePlayer.update();

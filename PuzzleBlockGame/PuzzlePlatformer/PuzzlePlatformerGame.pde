@@ -1,7 +1,7 @@
 // MAIN GAME FILE
 //background image
 PImage spaceBackground;
-
+PImage astronaut;
 
 // Tracks which keys are held down for both players to keep movement smoother
 boolean[] keyDown = new boolean[512];
@@ -79,6 +79,7 @@ void setup() {
 
   bombExplosion = loadImage("bombExplosion.png");
   spaceBackground = loadImage("spaceBackground.png");
+  astronaut = loadImage("astronaut.png");
   /*
   //To Test PowerUps Functionality
    powerUps.add(new PowerUp(200,200));

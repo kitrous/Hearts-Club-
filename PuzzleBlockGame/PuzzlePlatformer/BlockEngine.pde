@@ -226,7 +226,10 @@ class Player {
   // Draws the player as a simple rectangle
   void drawPlayer() {
     fill(col);
-    rect(x, y, w, h);
+    //rect(x, y, w, h);
+    //tint(255, 0, 0);
+    image(astronaut, x-10, y-10, 50, 50);
+    //tint(255);
   }
 }
 
@@ -756,7 +759,7 @@ void drawPlayMode() {
 
       for (int i = 0; i < playerTrailSize; i++) {
         int index = (which + 1 + i) % playerTrailSize;
-        fill(255, 0, 0, 25);
+        fill(255, 255, 0, 35);
         ellipse(pTrailX[index], pTrailY[index], i, i);
       }
     }

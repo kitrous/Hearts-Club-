@@ -1,5 +1,7 @@
 // PLAYER CLASS
 // Handles movement jumping gravity collisions and spike resets for each player
+PImage bombExplosion;
+boolean bombDrawn;
 class Player {
 
   // Player position on screen
@@ -250,7 +252,7 @@ class Platform {
   // DRAW PLATFORM
   // Draws the platform as a black rectangle
   void drawPlatform() {
-    fill(0);          // black color
+    fill(0,0,225, 150);          // black color
     rect(x, y, w, h); // draw shape
   }
 }
@@ -357,9 +359,12 @@ class BombPowerUp extends PowerUp {
       Block b= onScreenBlocks.get(i);
       float centerX = b.x + b.w/2;
       float centerY = b.y + b.h/2;
-
+      
+      
       if (dist (player.x, player.y, centerX, centerY) < range) {
         onScreenBlocks.remove(i);
+        
+       bombDrawn = true;
       }
     }
   }
@@ -527,13 +532,18 @@ void clearAllBuilds() {
 void drawBuildMode() {
 
   background(220);
+  
 
   fill(180);
   rect(0, 0, width - sidePanelWidth, worldHeight);
+  
+  image(spaceBackground, 0, 0);
 
-  fill(140);
+  fill(0, 0, 200, 150);
   rect(width - sidePanelWidth, 0, sidePanelWidth, worldHeight);
-
+  
+  
+  
   drawInventory();
 
   drawBlocks();
@@ -547,8 +557,9 @@ void drawBuildMode() {
 
   // Draw score boxes only in Build Mode
   drawScoreBoxes();
+  
 
-  fill(0);
+  fill(255);
   textAlign(CENTER);
   textSize(24);
   text("Press P to Play", width - 100, 360);
@@ -596,7 +607,7 @@ void drawInventory() {
   fill(100, 200, 100);
   rect(width - 150, 100, 100, 50);
 
-  fill(0);
+  fill(255);
   textSize(25);
   text("Block", width - 100, 135);
 
@@ -612,7 +623,7 @@ void drawInventory() {
   fill(0, 200, 255);
   circle(width - 100, 255, 30);
 
-  fill (0);
+  fill (255);
   textSize(20);
   text ("Speed", width - 100, 260);
 
@@ -627,7 +638,7 @@ void drawInventory() {
   fill(134, 41, 27);
   circle(width - 100, 310, 30);
 
-  fill(0);
+  fill(255);
   textSize(20);
   text ("Bomb", width - 100, 315);
 
@@ -707,7 +718,7 @@ void drawPlacementPreview() {
 void drawPlayMode() {
 
   background(200);
-
+  image(spaceBackground, 0, 0);
   // Draws start and finish platforms and flags
   drawStartFinish();
 
@@ -732,7 +743,7 @@ void drawPlayMode() {
 
     for (int i = 0; i < pDustSize; i++) {
       int index = (dWhich + 1 + i) % pDustSize;
-      fill(0, 0, 0, 25);
+      fill(255, 255, 255, 175);
       ellipse(pDustX[index], pDustY[index], i, i);
       ellipse(pDustX[index] - 5, pDustY[index], i, i);
       ellipse(pDustX[index] + 5, pDustY[index], i, i);
@@ -762,7 +773,7 @@ void drawPlayMode() {
   checkFinishReached();
 
   // Shows a small reminder to go back to build mode
-  fill(0);
+  fill(255);
   textSize(30);
   text("Press B to Build", 130, 40);
 }

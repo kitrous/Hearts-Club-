@@ -427,4 +427,39 @@ void PlaceLevel4() {
   amountOfBomb = 1;
 }
 
+void PlaceLevel5() {
+  onScreenBlocks.add(new Block(width/2, 120, 150, 200, 100, 60, 220));
+  onScreenBlocks.add(new Block(180, height/2 - 80, 120, 180, 90, 80, 40));
+  onScreenBlocks.add(new Block(width - 180, height/2 - 80, 120, 180, 90, 80, 40));
+  onScreenBlocks.add(new Block(200, height - 150, 100, 160, 100, 120, 50));
+  onScreenBlocks.add(new Block(width - 200, height - 150, 100, 160, 100, 120, 50));
+  onScreenBlocks.add(new Block(width/2, height/2 + 40, 150, 200, 100, 40, 40));
+  // Spike traps
+  spikeBlocks.add(new SpikeBlock(width/2 - 200, height/2 - 160));
+  spikeBlocks.add(new SpikeBlock(width/2 + 200, height/2 - 160)); 
+  spikeBlocks.add(new SpikeBlock(width/2, height - 220));        
+//Pieces
+  amountOfBlocks = 6;
+  amountOfSpeed = 2;
+  amountOfBomb = 2;
+}
+
+void PlaceLevel6() {
+  onScreenBlocks.add(new Block(width/2, 140, 180, 120, 80, 70, 260));
+  onScreenBlocks.add(new Block(160, 200, 140, 200, 120, 60, 35));
+  onScreenBlocks.add(new Block(width - 160, 200, 140, 200, 120, 60, 35));
+  onScreenBlocks.add(new Block(200, height/2, 120, 160, 100, 100, 40));
+  onScreenBlocks.add(new Block(width - 200, height/2, 120, 160, 100, 100, 40));
+  onScreenBlocks.add(new Block(width/2, height - 180, 150, 200, 100, 50, 50));
+  // Spike traps
+  spikeBlocks.add(new SpikeBlock(width/2 - 250, height/2 - 120));
+  spikeBlocks.add(new SpikeBlock(width/2 + 250, height/2 - 120));
+  spikeBlocks.add(new SpikeBlock(width/2, height/2 + 40));
+  spikeBlocks.add(new SpikeBlock(width/2, height - 260));
+  //Pieces
+  amountOfBlocks = 6;
+  amountOfSpeed = 3;  
+  amountOfBomb = 3;
+}
+
 // MAIN GAME END
